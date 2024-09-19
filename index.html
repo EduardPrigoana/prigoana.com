@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #080709;
+            color: #e0ceed;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .sitemap {
+            background-color: #151217;
+            color: #e0ceed;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #b657ff;
+            margin-bottom: 30px;
+            font-size: 26px;
+            font-weight: bold;
+        }
+        .section {
+            margin-bottom: 10px;
+        }
+        .section > .title {
+            background-color: #211d26;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #3b3442;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .section-content {
+            display: none;
+            padding: 10px;
+            background-color: #2c282f;
+            border: 1px solid #3b3442;
+            border-radius: 8px;
+            margin-top: 5px;
+        }
+        .section-content .title {
+            margin-top: 5px;
+        }
+        .section-content .title + .section-content {
+            padding-left: 20px;
+        }
+        .section-content a {
+            display: block;
+            text-decoration: none;
+            color: #e0ceed;
+            background-color: #211d26;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #3b3442;
+            margin-top: 5px;
+        }
+        .section-content a:hover {
+            background-color: #2c282f;
+            border-color: #3b3442;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="sitemap">
+            <h1>prigoana.lol</h1>
+
+            <div class="section">
+                <div class="title" onclick="toggleContent(this)">CS</div>
+                <div class="section-content">
+                    <div class="section">
+                      <a href="https://prigoana.lol/CS/ProblemSolvingProcess/">Problem Solving Process</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleContent(element) {
+            const content = element.nextElementSibling;
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
