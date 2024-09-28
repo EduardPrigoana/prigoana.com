@@ -9,13 +9,13 @@
         body {
             background-color: black;
             color: white;
-            font-family: sans-serif;
+            font-family: monospace;
         }
         .terminal {
             background-color: black;
             color: green;
-            font-family: monospace;
             padding: 20px;
+            text-align: center;
         }
         .terminal h1 {
             color: lightgreen;
@@ -23,13 +23,9 @@
         .terminal .command {
             color: lightblue;
         }
-        .terminal .path {
-            color: white;
-        }
         .terminal ul {
             list-style: none;
             padding: 0;
-            width: 100%;
             display: flex;
             justify-content: center;
             margin: 0;
@@ -44,8 +40,18 @@
         .terminal a:hover {
             text-decoration: underline;
         }
-        #spacer {
-            height: 0;
+        #widget {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #album-cover img {
+            max-width: 150px;
+            max-height: 150px;
+        }
+        #song {
+            text-align: center;
         }
     </style>
 </head>
@@ -62,8 +68,28 @@
     <script src="https://unpkg.com/butterchurn/lib/butterchurn.min.js"></script>
     <script src="https://unpkg.com/butterchurn-presets/lib/butterchurnPresets.min.js"></script>
     <script src="./index.js"></script>
-    <script>
+    <p style="line-height: 50px; height: 210px;">&nbsp;</p>
+    <div id="lastfm-widget"></div>
+    <div id="widget">
+        <p>Last played song</p>
+        <span id="song"></span><br>
+        <div id="album-cover"></div>
+    </div>
+    <script type="text/javascript">
+        let url = 'https://lastfm-last-played.biancarosa.com.br/yetiuard/latest-song';
+        let songElement = document.querySelector('#song');
+        let albumCoverElement = document.querySelector('#album-cover');
+        fetch(url)
+            .then(function (response) {
+                return response.json();
+            }).then(function (json) {
+                songElement.innerHTML = json['track']['name'] + ' - ' + json['track']['artist']['#text'];
+                let albumName = json['track']['album']['#text'];
+                let albumHtml = '<div>' + albumName + '</div>';
+                songElement.innerHTML += albumHtml;
+                let albumImageUrl = json['track']['image'][2]['#text'];
+                albumCoverElement.innerHTML = '<img src="' + albumImageUrl + '" alt="Album Cover">';
+            });
     </script>
-
 </body>
 </html>
