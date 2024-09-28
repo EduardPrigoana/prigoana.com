@@ -10,6 +10,7 @@
             background-color: black;
             color: white;
             font-family: monospace;
+            cursor: url('./cursor.cur'), auto;
         }
         .terminal {
             background-color: black;
@@ -36,6 +37,7 @@
         .terminal a {
             color: white;
             text-decoration: none;
+            cursor: url('./cursor.cur'), auto; /* Custom cursor for links */
         }
         .terminal a:hover {
             text-decoration: underline;
@@ -53,6 +55,7 @@
         #song {
             text-align: center;
         }
+        a{            cursor: url('./cursor.cur'), auto;}
     </style>
 </head>
 <body>
@@ -61,6 +64,7 @@
         <ul>
             <li><a href="/CS/">CS</a></li>
         </ul>
+        
         <p style="line-height: 50px; height: 210px;">&nbsp;</p>
     </div>
     <div id="app"></div>
@@ -91,5 +95,6 @@
                 albumCoverElement.innerHTML = '<img src="' + albumImageUrl + '" alt="Album Cover">';
             });
     </script>
+    
 </body>
 </html>
