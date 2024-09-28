@@ -1,6 +1,5 @@
 const Webamp = window.Webamp;
 const webamp = new Webamp({
-  initialTracks: [
     initialTracks: [
       {
         metaData: {
@@ -16,7 +15,6 @@ const webamp = new Webamp({
         },
         url: "https://eduardskibidiedger.github.io/1/002.%20Kanye%20West%20-%20Flashing%20Lights.flac"
       },
-      {
     {
         metaData: {
             artist: "Kanye West",
@@ -79,7 +77,7 @@ const webamp = new Webamp({
             title: "Niggas in Paris"
         },
         url: "https://eduardskibidiedger.github.io/1/011.%20JAY%20Z%20-%20Ni__as%20In%20Paris.flac"
-    }
+    },
     {
         metaData: {
             artist: "Kanye West",
@@ -163,7 +161,7 @@ const webamp = new Webamp({
             title: "Never Let Me Down"
         },
         url: "https://eduardskibidiedger.github.io/1/023.%20Kanye%20West%20-%20Never%20Let%20Me%20Down.flac"
-    }
+    },
     {
         metaData: {
             artist: "Kanye West",
@@ -394,7 +392,7 @@ const webamp = new Webamp({
             title: "IGOR'S THEME"
         },
         url: "https://eduardskibidiedger.github.io/2/053.%20Tyler,%20The%20Creator%20-%20IGOR'S%20THEME.flac"
-    }
+    },
     {
         metaData: {
             artist: "Tyler, The Creator",
@@ -499,7 +497,7 @@ const webamp = new Webamp({
             title: "Runaway"
         },
         url: "https://eduardskibidiedger.github.io/3/068.%20Pusha%20T%20-%20Runaway.flac"
-    }
+    },
     {
         metaData: {
             artist: "Kanye West",
@@ -723,7 +721,7 @@ const webamp = new Webamp({
             title: "30 Hours"
         },
         url: "https://eduardskibidiedger.github.io/4/101.%20Kanye%20West%20-%2030%20Hours.flac"
-    [
+      },
       {
         "metaData": {
           "artist": "Tyler, The Creator",
@@ -918,10 +916,8 @@ const webamp = new Webamp({
           "artist": "JAY-Z",
           "title": "Otis"
         },
-            },
-        url: "https://eduardskibidiedger.github.io/5/153.%20JAY%20Z%20-%20Otis.flac"
+        "url": "https://eduardskibidiedger.github.io/5/153.%20JAY%20Z%20-%20Otis.flac"
       },
-    [
       {
         "metaData": {
           "artist": "Tyler, The Creator",
@@ -1166,10 +1162,8 @@ const webamp = new Webamp({
           "title": "Wow V2"
         },
         "url": "https://eduardskibidiedger.github.io/5/Wow_V2.mp3"
-      }
-    ] 
-
-  ],
+      },
+    ],
   initialSkin: {
     url: "./skins/PurpleGlow.wsz",
   },
