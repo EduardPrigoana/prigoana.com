@@ -6,60 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>prigoana.lol</title>
     <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: monospace;
-            cursor: url('./cursor.cur'), auto;
-        }
-        .terminal {
-            background-color: black;
-            color: green;
-            padding: 20px;
-            text-align: center;
-        }
-        .terminal h1 {
-            color: lightgreen;
-        }
-        .terminal .command {
-            color: lightblue;
-        }
-        .terminal ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-        }
-        .terminal li {
-            margin: 0 15px;
-        }
-        .terminal a {
-            color: white;
-            text-decoration: none;
-            cursor: url('./cursor.cur'), auto; /* Custom cursor for links */
-        }
-        .terminal a:hover {
-            text-decoration: underline;
-        }
-        #widget {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        #album-cover img {
-            max-width: 150px;
-            max-height: 150px;
-        }
-        #song {
-            text-align: center;
-        }
-        a{            cursor: url('./cursor.cur'), auto;}
+body{background-color:#000;color:#fff;font-family:monospace;cursor:url(./cursor.cur),auto}.terminal{background-color:#000;color:green;padding:20px;text-align:center}.terminal h1{color:lightgreen}.terminal .command{color:lightblue}.terminal ul{list-style:none;padding:0;display:flex;justify-content:center;margin:0}.terminal li{margin:0 15px}.terminal a{color:#fff;text-decoration:none}.terminal a:hover{text-decoration:underline}#widget{display:flex;flex-direction:column;align-items:center;justify-content:center}#album-cover img{max-width:150px;max-height:150px}#song{text-align:center;}
     </style>
 </head>
 <body>
-
     <div class="terminal">
         <ul>
             <li><a href="/CS/">CS</a></li>
@@ -83,18 +33,14 @@
         let url = 'https://lastfm-last-played.biancarosa.com.br/yetiuard/latest-song';
         let songElement = document.querySelector('#song');
         let albumCoverElement = document.querySelector('#album-cover');
-        fetch(url)
-            .then(function (response) {
-                return response.json();
-            }).then(function (json) {
-                songElement.innerHTML = json['track']['name'] + ' - ' + json['track']['artist']['#text'];
-                let albumName = json['track']['album']['#text'];
-                let albumHtml = '<div>' + albumName + '</div>';
-                songElement.innerHTML += albumHtml;
-                let albumImageUrl = json['track']['image'][2]['#text'];
-                albumCoverElement.innerHTML = '<img src="' + albumImageUrl + '" alt="Album Cover">';
+        fetch(url).then(function(response){return response.json()}).then(function(json){songElement.innerHTML=json.track.name+' - '+json.track.artist['#text'];let albumName=json.track.album['#text'];songElement.innerHTML+='<div>'+albumName+'</div>';let albumImageUrl=json.track.image[2]['#text'];albumCoverElement.innerHTML='<img src="'+albumImageUrl+'" alt="Album Cover">'});
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js').then(function(registration) {
+                console.log('Service Worker registered with scope:', registration.scope);
+            }).catch(function(error) {
+                console.log('Service Worker registration failed:', error);
             });
+        }
     </script>
-    
 </body>
 </html>
