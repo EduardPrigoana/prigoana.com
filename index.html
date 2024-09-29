@@ -5,8 +5,6 @@
     <link rel="manifest" href="./manifest.json">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Welcome to prigoana.lol, your go-to source for music and more.">
-    <meta name="author" content="Your Name">
     <title>prigoana.lol</title>
     <style>
         body {
@@ -73,31 +71,30 @@
             font-family: monospace; 
             white-space: pre;
         }
+        a{            cursor: url(./link.cur), auto;}
     </style>
 </head>
 <body>
     <header>
         <div class="terminal">
             <ul>
-                <li><a href="/CS/">CS</a></li>
+                <li><a href="./projects.html">projects</a></li>
+                <li><a href="./about.html">about</a></li>
             </ul>
         </div>
     </header>
-    <main>
-        <div class="model"></div>
-        <div id="app"></div>
+    <main><p style="line-height: 50px; height: 200px;">&nbsp;</p>
+        <div id="app" ></div>
+        <p style="line-height: 50px; height: 230px;">&nbsp;</p>
         <div id="lastfm-widget"></div>
         <div id="widget">
-            <div class="spacer230p"></div>
             <p>Last played song</p>
             <span id="song"></span><br>
             <div id="album-cover"></div>
         </div>
     </main>
     <footer>
-        <p style="line-height: 50px; height: 210px;">&nbsp;</p>
     </footer>
-    <script src="model.js"></script>
     <script src="https://unpkg.com/webamp/built/webamp.bundle.min.js"></script>
     <script src="https://unpkg.com/butterchurn/lib/butterchurn.min.js"></script>
     <script src="https://unpkg.com/butterchurn-presets/lib/butterchurnPresets.min.js"></script>

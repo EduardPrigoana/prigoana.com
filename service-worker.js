@@ -1,9 +1,7 @@
 const CACHE_NAME = 'v1';
 const URLS_TO_CACHE = [
-    './',
     './favicon.png',
     './cursor.cur',
-    './index.js',
     'https://unpkg.com/webamp/built/webamp.bundle.min.js',
     'https://unpkg.com/butterchurn/lib/butterchurn.min.js',
     'https://unpkg.com/butterchurn-presets/lib/butterchurnPresets.min.js',
