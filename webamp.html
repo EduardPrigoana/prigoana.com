@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="./manifest.json">
+    <title>WebAmp</title>
+</head>
+<body style="background-color: black;">
+    <div id="app"></div>
+    <script src="https://unpkg.com/webamp/built/webamp.bundle.min.js"></script>
+    <script src="https://unpkg.com/butterchurn/lib/butterchurn.min.js"></script>
+    <script src="https://unpkg.com/butterchurn-presets/lib/butterchurnPresets.min.js"></script>
+    <script src="./index.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js').then(registration => {
+                    console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                }).catch(error => {
+                    console.log('ServiceWorker registration failed: ', error);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
