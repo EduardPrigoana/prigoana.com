@@ -3,6 +3,13 @@ const webamp = new Webamp({
     initialTracks: [
       {
         metaData: {
+          artist: "Tyler, The Creator",
+          title: "SWEET/I THOUGHT YOU WANTED TO DANCE",
+        },
+        url: "https://eduardskibidiedger.github.io/5/10.%20SWEET%20_%20I%20THOUGHT%20YOU%20WANTED%20TO%20DANCE%20(feat.%20Brent%20Faiyaz%20&%20Fana%20Hues).mp3"
+      },
+      {
+        metaData: {
           artist: "Kanye West",
           title: "I Wonder",
         },
