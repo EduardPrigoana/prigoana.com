@@ -6,7 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>prigoana.lol</title>
-    <style>        a{            cursor: url(./link.cur), auto;}
+    <style>
+        a {
+            cursor: url(./link.cur), auto;
+        }
         body {
             user-select: none;
             background-color: #000;
@@ -16,9 +19,14 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            background-color: #000;
-            color: rgb(255, 255, 255);
+            justify-content: center;
+            height: 20vh;
+            margin: 0;
             text-align: center;
+        }
+
+        .terminal {
+            margin-bottom: 20px;
         }
 
         .terminal ul {
@@ -28,25 +36,128 @@
             justify-content: center;
             margin: 0;
         }
+
         .terminal li {
             margin: 0 15px;
         }
+
         .terminal a {
             color: #fff;
             text-decoration: none;
         }
+
         .terminal a:hover {
-            text-decoration: underline;}
+            text-decoration: underline;
+        }
+
+        h3, h4 {
+            margin: 10px 0;
+        }
+
+        h4 {
+            cursor: pointer;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #333;
+            padding: 20px;
+            border: 1px solid #fff;
+            width: 80%;
+            max-width: 600px;
+            text-align: left;
+            color: #fff;
+            font-size: 1rem;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+
+        .modal-content p {
+            margin-bottom: 15px;
+        }
+
+        .modal-content a {
+            text-decoration: underline;
+            color: inherit;
+        }
+
+        .close {
+            color: #fff;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #ccc;
+        }
     </style>
 </head>
 <body>
-        <div class="terminal">
-            <ul>
-                <li><a href="./index.html">back</a></li>
-            </ul>
-        </div>
-    <h3>Guides</h3>
-<h4>Ad Blocking</h4>
+    <div class="terminal">
+        <ul>
+            <li><a href="./">back</a></li>
+        </ul>
     </div>
+    
+    <h3>Guides</h3>
+    
+    <h4 id="adBlockingBtn">Ad Blocking</h4>
+
+    <div id="adBlockingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <h3>Ad Blocking</h3>
+            <p>Add these 2 extensions to your browser:</p>
+            <p><a href="https://chromewebstore.google.com/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh">uBlock Origin Lite</a> <a href="https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock Origin</a></p>
+            <p>Go to the extensions icon, then click on uBlock Origon. Click on the settings icon, and turn on every filter. Do the same for uBlock Origin Lite.</p>
+            <h4>Why?</h4>
+            <p>This is to block ads (from Spotify, YouTube, etc.), protect from malware, remove annoyances like cookie pop-ups, and provide a cleaner, more streamlined web-browsing experience.</p>
+            <h4>Paranoid?</h4>
+            <p>Both extensions and filter lists are <strong>open-source</strong>, which means you can see their actual code.</p>
+            <p><a href="https://github.com/uBlockOrigin/uBOL-home">uBO Lite source</a> <a href="https://github.com/gorhill/uBlock">uBO source</a></p>
+        </div>
+    </div>
+
+    <script>
+        var modal = document.getElementById("adBlockingModal");
+        var btn = document.getElementById("adBlockingBtn");
+        var close = document.getElementById("closeModal");
+
+        btn.onclick = function() {
+            modal.style.display = "flex";
+        }
+
+        close.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>

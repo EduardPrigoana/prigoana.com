@@ -29,32 +29,14 @@
         <p style="line-height: 50px; height: 200px;">&nbsp;</p>
         <div id="app"></div>
         <p style="line-height: 50px; height: 230px;">&nbsp;</p>
-        <div id="lastfm-widget"></div>
-        <div id="widget">
-            <p>Last played song</p>
-            <span id="song"></span><br>
-            <div id="album-cover"></div>
-        </div>
     </main>
     <footer>
     </footer>
     <script src="https://unpkg.com/webamp/built/webamp.bundle.min.js"></script>
     <script src="https://unpkg.com/butterchurn/lib/butterchurn.min.js"></script>
     <script src="https://unpkg.com/butterchurn-presets/lib/butterchurnPresets.min.js"></script>
-    <script src="./index.js"></script>
+    <script src="./noah.js"></script>
     <script>
-        let url = 'https://lastfm-last-played.biancarosa.com.br/yetiuard/latest-song';
-        let songElement = document.querySelector('#song');
-        let albumCoverElement = document.querySelector('#album-cover');
-
-        fetch(url)
-            .then(response => response.json())
-            .then(json => {
-                songElement.innerHTML = `${json.track.name} - ${json.track.artist['#text']}`;
-                songElement.innerHTML += `<div>${json.track.album['#text']}</div>`;
-                albumCoverElement.innerHTML = `<img src="${json.track.image[2]['#text']}" alt="Album Cover">`;
-            });
-
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('./service-worker.js')
                 .then(registration => {
