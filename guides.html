@@ -24,11 +24,9 @@
             margin: 0;
             text-align: center;
         }
-
         .terminal {
             margin-bottom: 20px;
         }
-
         .terminal ul {
             list-style: none;
             padding: 0;
@@ -36,29 +34,22 @@
             justify-content: center;
             margin: 0;
         }
-
         .terminal li {
             margin: 0 15px;
         }
-
         .terminal a {
             color: #fff;
             text-decoration: none;
         }
-
         .terminal a:hover {
             text-decoration: underline;
         }
-
         h3, h4 {
             margin: 10px 0;
         }
-
-        h4 {
-            cursor: pointer;
+        .guide {
+            cursor: url(./link.cur), auto;
         }
-
-        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -72,7 +63,6 @@
             align-items: center;
             justify-content: center;
         }
-
         .modal-content {
             background-color: #333;
             padding: 20px;
@@ -83,22 +73,18 @@
             color: #fff;
             font-size: 1rem;
         }
-
         .modal-content img {
             width: 100%;
             height: auto;
             margin: 10px 0;
         }
-
         .modal-content p {
             margin-bottom: 15px;
         }
-
         .modal-content a {
             text-decoration: underline;
             color: inherit;
         }
-
         .close {
             color: #fff;
             font-size: 28px;
@@ -108,7 +94,6 @@
             top: 20px;
             cursor: pointer;
         }
-
         .close:hover {
             color: #ccc;
         }
@@ -123,7 +108,7 @@
     
     <h3>Guides</h3>
     
-    <h4 id="adBlockingBtn">Ad Blocking</h4>
+    <h4 class="guide" id="adBlockingBtn">Ad Blocking</h4>
 
     <div id="adBlockingModal" class="modal">
         <div class="modal-content">
@@ -131,7 +116,7 @@
             <h3>Ad Blocking</h3>
             <p>Add these 2 extensions to your browser:</p>
             <p><a href="https://chromewebstore.google.com/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh">uBlock Origin Lite</a> <a href="https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock Origin</a></p>
-            <p>Go to the extensions icon, then click on uBlock Origon. Click on the settings icon, and turn on every filter. Do the same for uBlock Origin Lite.</p>
+            <p>Go to the extensions icon, then click on uBlock Origin. Click on the settings icon, and turn on every filter. Do the same for uBlock Origin Lite.</p>
             <h4>Why?</h4>
             <p>This is to block ads (from Spotify, YouTube, etc.), protect from malware, remove annoyances like cookie pop-ups, and provide a cleaner, more streamlined web-browsing experience.</p>
             <h4>Paranoid?</h4>

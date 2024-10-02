@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/x-icon" href="./favicon.png">
+    <link rel="manifest" href="./manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prigoana.lol</title>
+    <link rel="stylesheet" href="../../common.css">
+</head>
+<body>
+    <header>
+        <div class="terminal">
+            <ul class="navbar">
+                <li><a href="../../">back</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">playlists</a>
+                    <div class="dropdown-content">
+                        <a href="../../">Eduard (👅)</a>
+                        <a href="../noah/">Noah (Yep)</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">disguise</a>
+                    <div class="dropdown-content">
+                        <a href="#" data-title="prigoana.lol" data-icon="./favicon.png">Base</a>
+                        <a href="#" data-title="Home" data-icon="https://www.gstatic.com/classroom/ic_product_classroom_144.png">Classroom</a>
+                        <a href="#" data-title="Home - Google Drive" data-icon="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png">Drive</a>
+                        <a href="#" data-title="Google Docs" data-icon="https://ssl.gstatic.com/docs/documents/images/kix-favicon-2023q4.ico">Docs</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <p style="line-height: 50px; height: 200px;">&nbsp;</p>
+        <div id="app"></div>
+        <p style="line-height: 50px; height: 230px;">&nbsp;</p>
+    </main>
+    <footer>
+    </footer>
+    <script src="https://unpkg.com/webamp/built/webamp.bundle.min.js"></script>
+    <script src="https://unpkg.com/butterchurn/lib/butterchurn.min.js"></script>
+    <script src="https://unpkg.com/butterchurn-presets/lib/butterchurnPresets.min.js"></script>
+    <script src="./index.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
+    </script>
+</body>
+</html>

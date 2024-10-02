@@ -283,31 +283,31 @@ const webamp = new Webamp({
       },
     ],
   initialSkin: {
-    url: "./skins/PurpleGlow.wsz",
+    url: "../../skins/PurpleGlow.wsz",
   },
   availableSkins: [
     {
-      url: "./skins/Axon.wsz",
+      url: "../../skins/Axon.wsz",
       name: "Axon",
     },
     {
-      url: "./skins/m-lo_black.wsz",
+      url: "../../skins/m-lo_black.wsz",
       name: "Black",
     },
     {
-      url: "./skins/PurpleGlow.wsz",
+      url: "../../skins/PurpleGlow.wsz",
       name: "Purple Glow",
     },
     {
-      url: "./skins/purpleplayer.wsz",
+      url: "../../skins/purpleplayer.wsz",
       name: "Purple",
     },
     {
-      url: "./skins/TSWNN.wsz",
+      url: "../../skins/TSWNN.wsz",
       name: "TSWNN",
     },
     {
-      url: "./skins/Vaporwave.wsz",
+      url: "../../skins/Vaporwave.wsz",
       name: "Vaporwave",
     },
   ],
@@ -325,4 +325,28 @@ const webamp = new Webamp({
     butterchurnOpen: true,
   },
 });
+        // Disguise Dropdown Functionality
+        document.querySelectorAll('.dropdown-content a[data-title]').forEach(function(element) {
+          element.addEventListener('click', function(event) {
+              event.preventDefault();
+              const newTitle = this.getAttribute('data-title');
+              const newIcon = this.getAttribute('data-icon');
+
+              // Change the document title
+              document.title = newTitle;
+
+              // Change the favicon
+              const favicon = document.getElementById('favicon');
+              if (favicon) {
+                  favicon.href = newIcon;
+              } else {
+                  const link = document.createElement('link');
+                  link.id = 'favicon';
+                  link.rel = 'icon';
+                  link.type = 'image/x-icon';
+                  link.href = newIcon;
+                  document.head.appendChild(link);
+              }
+          });
+      });
 webamp.renderWhenReady(document.getElementById("app"));
