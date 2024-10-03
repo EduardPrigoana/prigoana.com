@@ -47,6 +47,11 @@
         h3, h4 {
             margin: 10px 0;
         }
+        h4 {
+            display: inline-block;
+            margin: 0 15px;
+            cursor: pointer;
+        }
         .guide {
             cursor: url(./link.cur), auto;
         }
@@ -107,12 +112,15 @@
     </div>
     
     <h3>Guides</h3>
-    
-    <h4 class="guide" id="adBlockingBtn">Ad Blocking</h4>
+    <br>
+    <div style="display: flex; justify-content: center;">
+        <h4 class="guide" id="adBlockingBtn">Ad Blocking</h4>
+        <h4 class="guide" id="spotifyBtn">Spotify</h4>
+    </div>
 
     <div id="adBlockingModal" class="modal">
         <div class="modal-content">
-            <span class="close" id="closeModal">&times;</span>
+            <span class="close" id="closeAdBlockingModal">&times;</span>
             <h3>Ad Blocking</h3>
             <p>Add these 2 extensions to your browser:</p>
             <p><a href="https://chromewebstore.google.com/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh">uBlock Origin Lite</a> <a href="https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock Origin</a></p>
@@ -125,24 +133,66 @@
         </div>
     </div>
 
-    <script>
-        var modal = document.getElementById("adBlockingModal");
-        var btn = document.getElementById("adBlockingBtn");
-        var close = document.getElementById("closeModal");
+    <div id="spotifyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeSpotifyModal">&times;</span>
+            <h3>Spotify</h3>
+            <strong><u><p>Android</p></u></strong>
+            <p>go to <a href="https://github.com/Team-xManager/xManager/releases/latest">xManager's release page</a> and download the APK file there. Install it, open xManager, and sign in.</p>
+            <strong><u><p>iOS</p></u></strong>
+            <p>iOS sideloading is complicated, and there are lots of paid and free ways to sideload. <a href="https://github.com/SpotCompiled/SpotC-Plus-Plus/releases/latest">here's what tweaked iOS spotify client I would recommend</a>, and <a href="https://sideloading.gitbook.io/">here is a sideloading guide.</p></a>
+            <strong><u><p>Desktop</p></u></strong>
+            <p>Windows: download and run <a href="https://raw.githack.com/amd64fox/SpotX/main/Install_New_theme.bat">this powershell file</a>.</p>
+            <p>macOS and Linux: run this in a terminal: bash <(curl -sSL https://spotx-official.github.io/run.sh)</p>
+            <p>Browser: Follow <a href="./guides.html#adBlocking">my ad-blocking guide</a></p>
+        </div>
+    </div>
 
-        btn.onclick = function() {
-            modal.style.display = "flex";
+    <script>
+        var adBlockingModal = document.getElementById("adBlockingModal");
+        var adBlockingBtn = document.getElementById("adBlockingBtn");
+        var closeAdBlocking = document.getElementById("closeAdBlockingModal");
+
+        var spotifyModal = document.getElementById("spotifyModal");
+        var spotifyBtn = document.getElementById("spotifyBtn");
+        var closeSpotify = document.getElementById("closeSpotifyModal");
+
+        adBlockingBtn.onclick = function() {
+            adBlockingModal.style.display = "flex";
         }
 
-        close.onclick = function() {
-            modal.style.display = "none";
+        closeAdBlocking.onclick = function() {
+            adBlockingModal.style.display = "none";
+        }
+
+        spotifyBtn.onclick = function() {
+            spotifyModal.style.display = "flex";
+        }
+
+        closeSpotify.onclick = function() {
+            spotifyModal.style.display = "none";
         }
 
         window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
+            if (event.target == adBlockingModal) {
+                adBlockingModal.style.display = "none";
+            }
+            if (event.target == spotifyModal) {
+                spotifyModal.style.display = "none";
             }
         }
+
+        function showModalFromHash() {
+            const hash = window.location.hash;
+            if (hash === '#adBlocking') {
+                adBlockingModal.style.display = "flex";
+            } else if (hash === '#spotify') {
+                spotifyModal.style.display = "flex";
+            }
+        }
+
+        window.onload = showModalFromHash;
+        window.onhashchange = showModalFromHash;
     </script>
 </body>
 </html>
