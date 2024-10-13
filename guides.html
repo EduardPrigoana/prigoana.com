@@ -19,10 +19,11 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 20vh;
+            justify-content: flex-start;
+            height: 100vh;
             margin: 0;
             text-align: center;
+            padding-top: 20px;
         }
         .terminal {
             margin-bottom: 20px;
@@ -31,6 +32,7 @@
             list-style: none;
             padding: 0;
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             margin: 0;
         }
@@ -49,7 +51,6 @@
         }
         h4 {
             display: inline-block;
-            margin: 0 15px;
             cursor: pointer;
         }
         .guide {
@@ -65,8 +66,9 @@
             height: 100%;
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.8);
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
+            padding-top: 40px;
         }
         .modal-content {
             background-color: #333;
@@ -77,6 +79,9 @@
             text-align: left;
             color: #fff;
             font-size: 1rem;
+            overflow-y: auto;
+            max-height: 80%;
+            position: relative;
         }
         .modal-content img {
             width: 100%;
@@ -113,38 +118,49 @@
     
     <h3>Guides</h3>
     <br>
-    <div style="display: flex; justify-content: center;">
-        <h4 class="guide" id="adBlockingBtn">Ad Blocking</h4>
-        <h4 class="guide" id="spotifyBtn">Spotify</h4>
+    <div style="display: flex; justify-content: center; flex-wrap: wrap;">
+        <h4 class="guide" id="adBlockingBtn">Ad Blocking&nbsp;|&nbsp;</h4>
+        <h4 class="guide" id="spotifyBtn">Spotify&nbsp;|&nbsp;</h4>
+        <h4 class="guide" id="musDownBtn">Music Piracy</h4>
     </div>
 
+    <!-- Ad Blocking Modal -->
     <div id="adBlockingModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeAdBlockingModal">&times;</span>
             <h3>Ad Blocking</h3>
-            <p>Add these 2 extensions to your browser:</p>
-            <p><a href="https://chromewebstore.google.com/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh">uBlock Origin Lite</a> <a href="https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock Origin</a></p>
-            <p>Go to the extensions icon, then click on uBlock Origin. Click on the settings icon, and turn on every filter. Do the same for uBlock Origin Lite.</p>
+            <p>Install these two extensions:</p>
+            <p><a href="https://chromewebstore.google.com/detail/ublock-origin-lite/ddkjiahejlhfcafbddmgiahcphecmpfh">uBlock Origin Lite</a> | <a href="https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm">uBlock Origin</a></p>
+            <p>Go to their settings and turn on all filters.</p>
             <h4>Why?</h4>
-            <p>This is to block ads (from Spotify, YouTube, etc.), protect from malware, remove annoyances like cookie pop-ups, and provide a cleaner, more streamlined web-browsing experience.</p>
-            <h4>Paranoid?</h4>
-            <p>Both extensions and filter lists are <strong>open-source</strong>, which means you can see their actual code.</p>
-            <p><a href="https://github.com/uBlockOrigin/uBOL-home">uBO Lite source</a> <a href="https://github.com/gorhill/uBlock">uBO source</a></p>
+            <p>Blocks ads on Spotify, YouTube, protects from malware, removes cookie pop-ups, and improves browsing speed.</p>
+            <h4>Trust Issues?</h4>
+            <p>They're open-source. Check their code: <a href="https://github.com/uBlockOrigin/uBOL-home">uBO Lite</a> | <a href="https://github.com/gorhill/uBlock">uBlock Origin</a>.</p>
         </div>
     </div>
 
+    <!-- Spotify Modal -->
     <div id="spotifyModal" class="modal">
         <div class="modal-content">
             <span class="close" id="closeSpotifyModal">&times;</span>
             <h3>Spotify</h3>
-            <strong><u><p>Android</p></u></strong>
-            <p>go to <a href="https://github.com/Team-xManager/xManager/releases/latest">xManager's release page</a> and download the APK file there. Install it, open xManager, and sign in.</p>
-            <strong><u><p>iOS</p></u></strong>
-            <p>iOS sideloading is complicated, and there are lots of paid and free ways to sideload. <a href="https://github.com/SpotCompiled/SpotC-Plus-Plus/releases/latest">here's what tweaked iOS spotify client I would recommend</a>, and <a href="https://sideloading.gitbook.io/">here is a sideloading guide.</p></a>
-            <strong><u><p>Desktop</p></u></strong>
-            <p>Windows: download and run <a href="https://raw.githack.com/amd64fox/SpotX/main/Install_New_theme.bat">this powershell file</a>.</p>
-            <p>macOS and Linux: run this in a terminal: bash <(curl -sSL https://spotx-official.github.io/run.sh)</p>
-            <p>Browser: Follow <a href="./guides.html#adBlocking">my ad-blocking guide</a></p>
+            <p><strong>Android:</strong> Download the APK from <a href="https://github.com/Team-xManager/xManager/releases/latest">xManager</a>.</p>
+            <p><strong>iOS:</strong> Use this <a href="https://github.com/SpotCompiled/SpotC-Plus-Plus/releases/latest">tweaked Spotify client</a>. Check this <a href="https://sideloading.gitbook.io/">sideloading guide</a> for instructions.</p>
+            <p><strong>Desktop:</strong> Windows users, run <a href="https://raw.githack.com/amd64fox/SpotX/main/Install_New_theme.bat">this PowerShell script</a>. macOS/Linux users, run: <code>bash &lt;(curl -sSL https://spotx-official.github.io/run.sh)</code></p>
+            <p><strong>Browser:</strong> Use the <a href="#adBlocking">Ad-Blocking guide</a>.</p>
+        </div>
+    </div>
+
+    <!-- Music Piracy Modal -->
+    <div id="musDownModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeMusDownModal">&times;</span>
+            <h3>Music Piracy</h3>
+            <h4><u>Torrenting:</u></h4>
+            <p>Install <a href="https://www.qbittorrent.org/download">qBittorrent</a> and search for torrents on <a href="https://1337x.to/">1337x</a>. Always use a VPN like <a href="https://1.1.1.1">Cloudflare WARP</a> or <a href="https://protonvpn.com/">ProtonVPN</a>.</p>
+            <p>Click the magnet link, check what you're downloading, deselect unwanted files, and start the download. If it has no seeds, try a different torrent.</p>
+            <h4><u>Downloading:</u></h4>
+            <p>For Spotify playlists or songs, use <a href="https://lucida.su">Lucida</a>. Paste your playlist link and download. For higher quality, use Tidal forwarding.</p>
         </div>
     </div>
 
@@ -157,20 +173,32 @@
         var spotifyBtn = document.getElementById("spotifyBtn");
         var closeSpotify = document.getElementById("closeSpotifyModal");
 
+        var musDownModal = document.getElementById("musDownModal");
+        var musDownBtn = document.getElementById("musDownBtn");
+        var closeMusDown = document.getElementById("closeMusDownModal");
+
         adBlockingBtn.onclick = function() {
             adBlockingModal.style.display = "flex";
-        }
-
-        closeAdBlocking.onclick = function() {
-            adBlockingModal.style.display = "none";
         }
 
         spotifyBtn.onclick = function() {
             spotifyModal.style.display = "flex";
         }
 
+        musDownBtn.onclick = function() {
+            musDownModal.style.display = "flex";
+        }
+
+        closeAdBlocking.onclick = function() {
+            adBlockingModal.style.display = "none";
+        }
+
         closeSpotify.onclick = function() {
             spotifyModal.style.display = "none";
+        }
+
+        closeMusDown.onclick = function() {
+            musDownModal.style.display = "none";
         }
 
         window.onclick = function(event) {
@@ -180,19 +208,10 @@
             if (event.target == spotifyModal) {
                 spotifyModal.style.display = "none";
             }
-        }
-
-        function showModalFromHash() {
-            const hash = window.location.hash;
-            if (hash === '#adBlocking') {
-                adBlockingModal.style.display = "flex";
-            } else if (hash === '#spotify') {
-                spotifyModal.style.display = "flex";
+            if (event.target == musDownModal) {
+                musDownModal.style.display = "none";
             }
         }
-
-        window.onload = showModalFromHash;
-        window.onhashchange = showModalFromHash;
     </script>
 </body>
 </html>
