@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lesson 6</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      flex-direction: column;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    .input-group {
+      margin: 10px;
+    }
+
+    input {
+      padding: 10px;
+      width: 200px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+    }
+
+    .guess-result {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Calculator Section -->
+    <h2>Calculator: Add, Divide by 2, and Check Even/Odd</h2>
+    <div class="input-group">
+      <input type="number" id="num1" placeholder="Enter first number">
+    </div>
+    <div class="input-group">
+      <input type="number" id="num2" placeholder="Enter second number">
+    </div>
+    <div class="input-group">
+      <button onclick="calculate()">Calculate</button>
+    </div>
+    <div id="calc-result" class="result"></div>
+
+    <hr>
+
+    <!-- Guessing Game Section -->
+    <h2>Number Guessing Game</h2>
+    <div class="input-group">
+      <input type="number" id="guess" placeholder="Guess the number (1-10)">
+    </div>
+    <div class="input-group">
+      <button onclick="guessNumber()">Guess</button>
+    </div>
+    <div id="guess-result" class="guess-result"></div>
+  </div>
+
+  <script>
+    // Function for Calculator
+    function calculate() {
+      const num1 = parseFloat(document.getElementById('num1').value);
+      const num2 = parseFloat(document.getElementById('num2').value);
+      
+      if (isNaN(num1) || isNaN(num2)) {
+        alert("Please enter valid numbers.");
+        return;
+      }
+
+      const sum = num1 + num2;
+      const result = sum / 2;
+      const isEven = result % 2 === 0 ? "even" : "odd";
+
+      document.getElementById('calc-result').innerHTML = 
+        `The result is ${result}, which is <strong>${isEven}</strong>.`;
+    }
+
+    // Function for Number Guessing Game
+    function guessNumber() {
+      const userGuess = parseInt(document.getElementById('guess').value);
+      const randomNumber = Math.floor(Math.random() * 10) + 1;
+
+      if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
+        alert("Please guess a number between 1 and 10.");
+        return;
+      }
+
+      if (userGuess === randomNumber) {
+        document.getElementById('guess-result').innerHTML = 
+          `<strong>Congratulations!</strong> You guessed the number ${randomNumber}.`;
+      } else if (userGuess > randomNumber) {
+        document.getElementById('guess-result').innerHTML = 
+          `Too high! The number was ${randomNumber}. Try again.`;
+      } else {
+        document.getElementById('guess-result').innerHTML = 
+          `Too low! The number was ${randomNumber}. Try again.`;
+      }
+    }
+  </script>
+
+</body>
+</html>
