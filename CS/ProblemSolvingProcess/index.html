@@ -6,59 +6,108 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Problem Solving Process Poster</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Reset some default styles */
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
             background-color: #080709; /* Dark background for body */
             color: #e0ceed; /* Light text color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
+
         .poster {
-            width: 210mm;
-            height: 297mm;
-            margin: 0 auto;
-            padding: 20mm;
+            width: 100%;
+            max-width: 800px; /* Limits width on larger screens */
             background-color: #151217; /* Dark background for poster */
             color: #e0ceed; /* Light text color */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             border-radius: 10px;
+            padding: 2em;
         }
+
         h1 {
             text-align: center;
             color: #b657ff; /* Lilac color for header */
-            margin-bottom: 30px;
-            font-size: 26px;
+            margin-bottom: 1.5em;
+            font-size: 2em;
             font-weight: bold;
         }
+
         h2 {
             color: #a29dfa; /* Softer lilac color */
             border-bottom: 2px solid #b657ff; /* Lilac border */
-            padding-bottom: 10px;
-            margin-top: 30px;
-            font-size: 20px;
+            padding-bottom: 0.5em;
+            margin-top: 1.5em;
+            font-size: 1.5em;
         }
+
         p {
-            font-size: 14px;
-            line-height: 1.8;
+            font-size: 1em;
+            line-height: 1.6;
+            margin-top: 0.5em;
             color: #e0ceed; /* Light text color */
         }
+
         .section {
-            margin-bottom: 20px;
+            margin-bottom: 1.5em;
         }
+
         .example {
             background-color: #211d26; /* Dark lilac tone for example box */
-            padding: 15px;
+            padding: 1em;
             border-radius: 8px;
-            margin-top: 15px;
+            margin-top: 1em;
             border: 1px solid #3b3442; /* Darker purple border */
         }
+
         .example p {
-            margin: 5px 0;
+            margin: 0.5em 0;
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            p {
+                font-size: 0.95em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+
+            .poster {
+                padding: 1.5em;
+            }
         }
     </style>
 </head>
 <body>
-<div style="height: 20mm;"></div>
     <div class="poster">
         <h1>Problem Solving Process</h1>
 
@@ -95,6 +144,5 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>
