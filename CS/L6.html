@@ -5,50 +5,101 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lesson 6</title>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     body {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
+      background-color: #080709;
+      color: #e0ceed;
       flex-direction: column;
     }
-
     .container {
       text-align: center;
+      background-color: #151217;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      width: 100%;
     }
-
+    h2 {
+      font-size: 24px;
+      color: #b657ff;
+      margin-bottom: 20px;
+    }
     .input-group {
-      margin: 10px;
+      margin: 20px 0;
     }
-
     input {
-      padding: 10px;
-      width: 200px;
+      padding: 12px;
+      width: 100%;
       font-size: 16px;
+      background-color: #211d26;
+      color: #e0ceed;
+      border: 1px solid #3b3442;
+      border-radius: 5px;
     }
-
+    input:focus {
+      border-color: #b657ff;
+      outline: none;
+    }
     button {
-      padding: 10px 20px;
+      padding: 12px 20px;
       font-size: 16px;
+      background-color: #b657ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
-
-    .result {
-      margin-top: 20px;
+    button:hover {
+      background-color: #a29dfa;
     }
-
-    .guess-result {
+    .result, .guess-result {
       margin-top: 20px;
       font-size: 18px;
+      font-weight: bold;
+    }
+    hr {
+      margin: 40px 0;
+      border: none;
+      border-top: 2px solid #3b3442;
+    }
+    .terminal {
+      font-family: monospace;
+      padding: 20px;
+    }
+    .navbar {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+    }
+    .navbar a {
+      text-decoration: none;
+      color: #ffffff;
+    }
+    .navbar a:hover {
+      background-color: #a29dfa;
     }
   </style>
 </head>
 <body>
-
+  <div class="terminal">
+    <ul class="navbar">
+      <li><a href="./">back</a></li>
+    </ul>
+  </div>
   <div class="container">
-    <!-- Calculator Section -->
     <h2>Calculator: Add, Divide by 2, and Check Even/Odd</h2>
     <div class="input-group">
       <input type="number" id="num1" placeholder="Enter first number">
@@ -60,10 +111,7 @@
       <button onclick="calculate()">Calculate</button>
     </div>
     <div id="calc-result" class="result"></div>
-
     <hr>
-
-    <!-- Guessing Game Section -->
     <h2>Number Guessing Game</h2>
     <div class="input-group">
       <input type="number" id="guess" placeholder="Guess the number (1-10)">
@@ -73,48 +121,31 @@
     </div>
     <div id="guess-result" class="guess-result"></div>
   </div>
-
   <script>
-    // Function for Calculator
     function calculate() {
       const num1 = parseFloat(document.getElementById('num1').value);
       const num2 = parseFloat(document.getElementById('num2').value);
-      
       if (isNaN(num1) || isNaN(num2)) {
         alert("Please enter valid numbers.");
         return;
       }
-
-      const sum = num1 + num2;
-      const result = sum / 2;
+      const result = (num1 + num2) / 2;
       const isEven = result % 2 === 0 ? "even" : "odd";
-
-      document.getElementById('calc-result').innerHTML = 
-        `The result is ${result}, which is <strong>${isEven}</strong>.`;
+      document.getElementById('calc-result').innerHTML = `The result is ${result}, which is <strong>${isEven}</strong>.`;
     }
-
-    // Function for Number Guessing Game
     function guessNumber() {
       const userGuess = parseInt(document.getElementById('guess').value);
       const randomNumber = Math.floor(Math.random() * 10) + 1;
-
       if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
         alert("Please guess a number between 1 and 10.");
         return;
       }
-
       if (userGuess === randomNumber) {
-        document.getElementById('guess-result').innerHTML = 
-          `<strong>Congratulations!</strong> You guessed the number ${randomNumber}.`;
-      } else if (userGuess > randomNumber) {
-        document.getElementById('guess-result').innerHTML = 
-          `Too high! The number was ${randomNumber}. Try again.`;
+        document.getElementById('guess-result').innerHTML = `<strong>Congratulations!</strong> You guessed the number ${randomNumber}.`;
       } else {
-        document.getElementById('guess-result').innerHTML = 
-          `Too low! The number was ${randomNumber}. Try again.`;
+        document.getElementById('guess-result').innerHTML = userGuess > randomNumber ? `Too high! The number was ${randomNumber}. Try again.` : `Too low! The number was ${randomNumber}. Try again.`;
       }
     }
   </script>
-
 </body>
 </html>
