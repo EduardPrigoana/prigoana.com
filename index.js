@@ -540,6 +540,12 @@ const webamp = new Webamp({
     },
     {
         "url": "https://6.prigoana.lol/Tyler,%20The%20Creator%20-%20GONE,%20GONE%20-%20THANK%20YOU.flac"
+    },
+    {
+        "url": "https://files.catbox.moe/20n9m6.flac"
+    },
+    {
+        "url": "https://files.catbox.moe/u4io14.flac"
     }
     ],
   initialSkin: {
