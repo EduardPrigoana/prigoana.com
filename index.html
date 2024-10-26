@@ -7,6 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>prigoana.lol</title>
     <link rel="stylesheet" href="./common.css">
+    <script>
+        // Check if the Media Session API is supported
+        if ('mediaSession' in navigator) {
+            // Define media session actions
+            navigator.mediaSession.setActionHandler('play', function() {
+                webamp.play();
+            });
+
+            navigator.mediaSession.setActionHandler('pause', function() {
+                webamp.stop();
+            });
+
+            navigator.mediaSession.setActionHandler('previoustrack', function() {
+                webamp.previousTrack();
+            });
+
+            navigator.mediaSession.setActionHandler('nexttrack', function() {
+                webamp.nextTrack();
+            });
+        }
+    </script>
 </head>
 <body>
     <header>
