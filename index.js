@@ -5,10 +5,18 @@ const webamp = new Webamp({
         "url": "https://1.prigoana.lol/Consequence%20-%2003'%20Til%20Infinity.flac"
     },
     {
-        "url": "https://1.prigoana.lol/Consequence%20-%20Doctor,%20Doctor.ogg"
+        metaData: {
+          artist: "Consequence",
+          title: "Doctor, Doctor",
+        },
+        url: "https://1.prigoana.lol/Consequence%20-%20Doctor,%20Doctor.flac",
     },
     {
-        "url": "https://1.prigoana.lol/Consequence%20-%20Getting%20Out%20The%20Game.ogg"
+        metaData: {
+          artist: "Consequence",
+          title: "Getting Out The Game",
+        },
+        url: "https://1.prigoana.lol/Consequence%20-%20Getting%20Out%20The%20Game.flac",
     },
     {
         "url": "https://1.prigoana.lol/Consequence%20-%20I%20See%20Now%20(feat.%20Kanye%20West%20&%20Little%20Brother).flac"
@@ -17,7 +25,11 @@ const webamp = new Webamp({
         "url": "https://1.prigoana.lol/Consequence%20-%20So%20Soulful.flac"
     },
     {
-        "url": "https://1.prigoana.lol/Consequence%20-%20Yard%202%20Yard.ogg"
+        metaData: {
+          artist: "Consequence",
+          title: "Yard 2 Yard",
+        },
+        url: "https://1.prigoana.lol/Consequence%20-%20Yard%202%20Yard.flac",
     },
     {
         "url": "https://1.prigoana.lol/Frank%20Ocean%20-%20In%20My%20Room.flac"
