@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URL to JSON Formatter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    textarea, input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    #output {
+      white-space: pre-wrap;
+      background-color: #f9f9f9;
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <textarea id="urlInput" rows="10" placeholder="Paste URLs here, one per line..."></textarea>
+  <button onclick="convertUrls()">Convert</button>
+
+  <h2>Formatted Output</h2>
+  <div id="output"></div>
+
+  <script>
+    function convertUrls() {
+      const input = document.getElementById("urlInput").value;
+      const outputDiv = document.getElementById("output");
+      
+      // Split the input into lines
+      const lines = input.trim().split("\n");
+
+      // Map each line to a formatted JSON object
+      const formattedJson = lines.map(line => {
+        let url = line.trim();
+        
+        // Prepend https:// if not already present
+        if (!url.startsWith("http://") && !url.startsWith("https://")) {
+          url = "https://" + url;
+        }
+
+        // Extract artist and title from the filename in the URL
+        const filename = decodeURIComponent(url.split("/").pop().replace(".flac", ""));
+        const [artist, title] = filename.split(" - ");
+
+        return {
+          metaData: {
+            artist: artist || "Unknown Artist",
+            title: title || "Unknown Title"
+          },
+          url: url
+        };
+      });
+
+      // Display formatted JSON as a string
+      outputDiv.textContent = JSON.stringify(formattedJson, null, 2);
+    }
+  </script>
+
+</body>
+</html>
