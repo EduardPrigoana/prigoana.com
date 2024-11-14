@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGOR</title>
+    <link rel="icon" href="https://prigoana.lol/favicon.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff; /* Set default text color to white */
+            font-family: monospace;
+            user-select: none;
+            cursor: url(https://prigoana.lol/cursor.cur), auto;
+            margin: 0;
+            padding: 0;
+            display: block;
+        }
+    
+        .container {
+            max-width: 800px;
+            margin: 0 auto; /* Center the container horizontally */
+            text-align: center; /* Center the text inside the container */
+            padding: 20px;
+        }
+    
+        .text-center {
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+    
+        .navbar {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+    
+        .navbar a, a, .dropbtn {
+            color: #fff;
+            text-decoration: none;
+            cursor: url(https://prigoana.lol/link.cur), auto;
+        }
+    
+        #gallery img {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            margin: 5px;
+        }
+    
+        #gallery-display {
+            display: none;
+            background-color: #222;
+            padding: 20px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            border: 1px solid #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            width: 400px; /* Fixed width for the modal */
+            max-height: 80%; /* Set max height for the modal */
+            overflow-y: auto; /* Allow vertical scrolling if content overflows */
+            z-index: 2;
+        }
+    
+        #gallery-display img {
+            width: 400px;
+            height: auto;
+        }
+    
+        #gallery-display .caption {
+            margin-top: 10px;
+            color: #fff; /* Ensure caption text is white */
+        }
+    
+        #gallery-display .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff; /* Close button color */
+        }
+    
+        #gallery-display .arrow {
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            color: #fff;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+        }
+    
+        #gallery-display .arrow.left {
+            left: 10px;
+            transform: translateY(-50%);
+        }
+    
+        #gallery-display .arrow.right {
+            right: 10px;
+            transform: translateY(-50%);
+        }
+    
+        @media (min-width: 768px) {
+            .container {
+                width: 70%; /* Adjust width for larger screens */
+                margin: 0 auto; /* Center the container */
+            }
+        }
+    </style>
+    
+</head>
+<body class="container">
+    <p><a href="../">back</a></p>
+        <p>This is where I will be putting pieces of media that I review. Please do not take these reviews as objective, and if my opinion doesn't align with yours don't think it should. The worst mistake is letting critics decide what your opinion should be. Everything here should be treated as a recommendation. Thank you.<br><br></p>
+        <p><a href="./IGOR/">IGOR</a></p>
+</body>
+</html>

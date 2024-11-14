@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGOR</title>
+    <link rel="icon" href="./favicon.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff; /* Set default text color to white */
+            font-family: monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            user-select: none;
+            cursor: url(https://prigoana.lol/cursor.cur), auto;
+        }
+        .container, .terminal ul.navbar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .navbar {
+            list-style: none; /* Remove the dot next to the back button */
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+        }
+        .navbar a, a, .dropbtn {
+            color: #fff;
+            text-decoration: none;
+            cursor: url(https://prigoana.lol/link.cur), auto;
+        }
+        a:hover, .dropbtn:hover {
+            text-decoration: underline;
+        }
+        .container {
+            gap: 20px;
+        }
+        #app, #info {
+            width: 300px;
+            margin: 20px;
+        }
+        #gallery img {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        #gallery-display {
+    display: none;
+    background-color: #222;
+    padding: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    border: 1px solid #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 400px; /* Fixed width for the modal */
+    max-height: 80%; /* Set max height for the modal */
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
+    z-index: 2;
+}
+
+
+        #gallery-display img {
+            width: 400px;
+            height: auto;
+        }
+        #gallery-display .caption {
+            margin-top: 10px;
+            color: #fff; /* Ensure caption text is white */
+        }
+        #gallery-display .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #fff; /* Close button color */
+        }
+        #gallery-display .arrow {
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            color: #fff;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        #gallery-display .arrow.left {
+            left: 10px;
+            transform: translateY(-50%);
+        }
+        #gallery-display .arrow.right {
+            right: 10px;
+            transform: translateY(-50%);
+        }
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="terminal">
+            <ul class="navbar">
+                <li><a href="../">back</a></li>
+            </ul>
+        </div>
+    </header>
+    <main><br><br><br>
+        <div class="container">
+            <div id="app"></div>
+            <div id="info">
+                IGOR, one of the best and most influential albums of the 21st century, by American rapper, artist, and creative Tyler, The Creator, came out on May 17, 2019, with 12 masterful tracks. It received an update adding the bonus track "BOYFRIEND" in place of track #4, "EXACTLY WHAT YOU RUN FROM YOU END UP CHASING". Here, I have included all tracks and cover media in the highest quality I could find. As Tyler instructs, you should listen to this album without distraction to fully take in the meaning, quality, and effort put into it. <br><br> I would go into detail about what the album is about; however, I recommend listening to the album, interpreting the lyrics, and developing your own theory. If you're still curious, watch a video explaining its themes. Personally, I recommend <a href="https://inv.nadeko.net/watch?v=3w5iqQp9khs">this video</a> by TennisThom as it aligns with my interpretation and is masterfully executed.
+            </div>
+        </div><br><br><br>
+        <center><p>gallery</p>
+            <div id="gallery">
+                <img src="https://igor.prigoana.lol/covers/main3000x3000.png" alt="Main Cover Art">
+                <img src="https://igor.prigoana.lol/covers/alt2048x2048.png" alt="Mixed media alternate cover for 'IGOR' that's seen on limited Vinyl releases, designed by Lewis Rossignol">
+                <img src="https://igor.prigoana.lol/covers/2alt2048x2048.png" alt="This cover was was used for promoting the album until the official cover was revealed with the release of IGOR on May 17, 2019.">
+                <img src="https://igor.prigoana.lol/covers/3alt1500x1500.png" alt="Instructions on how to listen to IGOR. This was posted the night before IGOR’s release on all of Tyler’s social media platforms."><br>
+                <img src="https://igor.prigoana.lol/covers/igorstheme1218x1218.png" alt="Lyrics sheet for 'IGOR'S THEME.'">
+                <img src="https://igor.prigoana.lol/covers/earfquake1218x1218.png" alt="Lyrics sheet for 'EARFQUAKE.' Carti lyrics cannot be transcribed.">
+                <img src="https://igor.prigoana.lol/covers/runningoutoftime1218x1218.png" alt="Lyrics sheet for 'RUNNING OUT OF TIME.'">
+                <img src="https://igor.prigoana.lol/covers/newmagicwand1218x1218.png" alt="Lyrics sheet for 'NEW MAGIC WAND.'">
+                <img src="https://igor.prigoana.lol/covers/aboyisagun1218x1218.png" alt="Lyrics sheet for 'PUPPET.'">
+                <img src="https://igor.prigoana.lol/covers/puppet1218x1218.png" alt="Lyrics sheet for 'PUPPET,' has lines that are unheard in the final version. Kanye lyrics cannot be transcribed."><br>
+                <img src="https://igor.prigoana.lol/covers/whatsgood1218x1218.png" alt="Lyrics sheet for 'WHAT'S GOOD.'">
+                <img src="https://igor.prigoana.lol/covers/gonegone1218x1218.png" alt="Lyrics sheet for 'GONE, GONE.'">
+                <img src="https://igor.prigoana.lol/covers/thankyou1218x1218.png" alt="Lyrics sheet for 'THANK YOU.'">
+                <img src="https://igor.prigoana.lol/covers/idontloveyouanymore1218x1218.png" alt="Lyrics sheet for 'I DON'T LOVE YOU ANYMORE.'">
+                <img src="https://igor.prigoana.lol/covers/arewestillfriends1218x1218.png" alt="Lyrics sheet for 'ARE WE STILL FRIENDS?'">
+            </div>
+        </center>
+    </main>
+
+    <div id="gallery-display">
+        <span class="close" onclick="closeGallery()">×</span>
+        <div class="arrow left" onclick="navigateGallery(-1)">&#10094;</div>
+        <img id="displayed-img" src="" alt="">
+        <div class="arrow right" onclick="navigateGallery(1)">&#10095;</div>
+        <div class="caption" id="img-caption"></div>
+    </div>
+    <h3>final rating: 10/10</h3>
+    <h3>Downloads</h3>
+    <table>
+        <tr>
+            <th><a href="https://github.com/EduardSkibidiGooner/IGOR/releases/download/zips/covers-igor.zip">covers-igor.zip</a></th>
+
+            <tr>
+                <td><a href="https://github.com/EduardSkibidiGooner/IGOR/releases/download/zips/covers-igor.zip">tracks-igor.zip</a></td>
+                <tr>
+                    <td><a href="https://github.com/EduardSkibidiGooner/IGOR/releases/download/zips/MVs-igor.zip">MVs-igor.zip</a></td>
+        </table>
+    <br>
+    <script src="https://unpkg.com/webamp/built/webamp.bundle.min.js"></script>
+    <script src="https://unpkg.com/butterchurn/lib/butterchurn.min.js"></script>
+    <script src="https://unpkg.com/butterchurn-presets/lib/butterchurnPresets.min.js"></script>
+    <script src="./index.js"></script>
+    <script>
+        const gallery = document.getElementById('gallery');
+        const galleryDisplay = document.getElementById('gallery-display');
+        const displayedImg = document.getElementById('displayed-img');
+        const imgCaption = document.getElementById('img-caption');
+        let currentIndex = 0;
+
+        const images = Array.from(gallery.getElementsByTagName('img'));
+
+        gallery.addEventListener('click', function(event) {
+            if (event.target.tagName === 'IMG') {
+                openGallery(event.target);
+            }
+        });
+
+        function openGallery(target) {
+            currentIndex = images.indexOf(target);
+            displayedImg.src = target.src;
+            imgCaption.textContent = target.alt;
+            galleryDisplay.style.display = 'block';
+        }
+
+        function closeGallery() {
+            galleryDisplay.style.display = 'none';
+            displayedImg.src = '';
+            imgCaption.textContent = '';
+        }
+
+        function navigateGallery(direction) {
+            currentIndex = (currentIndex + direction + images.length) % images.length;
+            displayedImg.src = images[currentIndex].src;
+            imgCaption.textContent = images[currentIndex].alt;
+        }
+
+        // Removed the click event listener for galleryDisplay
+    </script>
+</body>
+</html>

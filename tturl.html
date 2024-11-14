@@ -10,17 +10,41 @@
       max-width: 600px;
       margin: 40px auto;
       padding: 20px;
+      background-color: #1b1b1b; /* Pure black background */
+      color: #c792ea; /* Light purple text color */
     }
     textarea, input, button {
       width: 100%;
       padding: 10px;
       margin-top: 10px;
+      background-color: #2a2a2a; /* Darker black for inputs */
+      color: #c792ea; /* Light purple text in inputs */
+      border: 1px solid #5c5c5c; /* Gray border for inputs */
+      border-radius: 4px;
+    }
+    textarea::placeholder {
+      color: #8a8a8a; /* Gray placeholder text */
+    }
+    button {
+      background-color: #6a1b9a; /* Deep purple for button */
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+    }
+    button:hover {
+      background-color: #8e24aa; /* Lighter purple on hover */
     }
     #output {
       white-space: pre-wrap;
-      background-color: #f9f9f9;
+      background-color: #2a2a2a; /* Darker black for output background */
       padding: 10px;
-      border: 1px solid #ddd;
+      border: 1px solid #5c5c5c; /* Gray border for output */
+      color: #c792ea; /* Light purple text in output */
+      border-radius: 4px;
+    }
+    h2 {
+      color: #ba68c8; /* Bright purple for heading */
     }
   </style>
 </head>
