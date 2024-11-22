@@ -1631,6 +1631,41 @@ const webamp = new Webamp({
           "title": "Xplosion"
         },
         "url": "https://9.prigoana.lol/Outkast - Xplosion.flac"
+      },
+      {
+        "metaData": {
+          "artist": "Malik Yusef",
+          "title": " Wouldn't You Like To..."
+        },
+        "url": "https://9.prigoana.lol/Malik Yusef - Wouldn't You Like To….flac"
+      },
+      {
+        "metaData": {
+          "artist": "Immortal Technique",
+          "title": "Dance With The Devil"
+        },
+        "url": "https://9.prigoana.lol/Immortal Technique - Dance with the Devil"
+      },
+      {
+        "metaData": {
+          "artist": "Outkast",
+          "title": "ATLiens"
+        },
+        "url": "https://9.prigoana.lol/Outkast - ATLiens"
+      },
+      {
+        "metaData": {
+          "artist": "OutKast",
+          "title": "Rosa Parks"
+        },
+        "url": "https://9.prigoana.lol/Outkast - Rosa Parks.flac"
+      },
+      {
+        "metaData": {
+          "artist": "Outkast",
+          "title": "Ms. Jackson"
+        },
+        "url": "https://9.prigoana.lol/Outkast - Ms. Jackson.flac"
       }
     ],
   initialSkin: {
