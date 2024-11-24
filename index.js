@@ -1651,14 +1651,14 @@ const webamp = new Webamp({
           "artist": "Outkast",
           "title": "ATLiens"
         },
-        "url": "https://9.prigoana.lol/Outkast - ATLiens"
+        "url": "https://9.prigoana.lol/Outkast - ATLiens.flac"
       },
       {
         "metaData": {
           "artist": "OutKast",
           "title": "Rosa Parks"
         },
-        "url": "https://9.prigoana.lol/Outkast - Rosa Parks.flac"
+        "url": "https://9.prigoana.lol/OutKast - Rosa Parks.flac"
       },
       {
         "metaData": {
