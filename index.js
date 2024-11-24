@@ -1666,6 +1666,104 @@ const webamp = new Webamp({
           "title": "Ms. Jackson"
         },
         "url": "https://9.prigoana.lol/Outkast - Ms. Jackson.flac"
+      },
+      {
+        "metaData": {
+          "artist": "Travis Scott",
+          "title": "SICKO MODE"
+        },
+        "url": "https://9.prigoana.lol/Travis Scott - SICKO MODE.flac"
+      },
+      {
+        "metaData": {
+          "artist": "Kendrick Lamar",
+          "title": "tv off"
+        },
+        "url": "https://9.prigoana.lol/Kendrick Lamar - tv off.flac"
+      },
+      {
+        "metaData": {
+          "artist": "Kendrick Lamar",
+          "title": "squabble up"
+        },
+        "url": "https://9.prigoana.lol/Kendrick Lamar - squabble up.flac"
+      },
+      {
+        "metaData": {
+          "artist": "Tyler, The Creator",
+          "title": "NUMBER, NUMBER.mp3"
+        },
+        "url": "https://9.prigoana.lol/Tyler, The Creator - NUMBER, NUMBER.mp3"
+      },
+      {
+        "metaData": {
+          "artist": "Kanye West",
+          "title": "Dream Come True.mp3"
+        },
+        "url": "https://9.prigoana.lol/Kanye West - Dream Come True.mp3"
+      },
+      {
+        "metaData": {
+          "artist": "Kanye West",
+          "title": "Ghetto University [V17] (feat. Charlie Wilson, The WRLDFMS Tony Williams & John Legend).mp3"
+        },
+        "url": "https://9.prigoana.lol/Kanye West - Ghetto University [V17] (feat. Charlie Wilson, The WRLDFMS Tony Williams & John Legend).mp3"
+      },
+      {
+        "metaData": {
+          "artist": "Kanye West",
+          "title": "Home [V2] (feat. John Legend).mp3"
+        },
+        "url": "https://9.prigoana.lol/Kanye West - Home [V2] (feat. John Legend).mp3"
+      },
+      {
+        "metaData": {
+          "artist": "Kanye West",
+          "title": "Mama's Boy [V9] .mp3"
+        },
+        "url": "https://9.prigoana.lol/Kanye West - Mama's Boy [V9] .mp3"
+      },
+      {
+        "metaData": {
+          "artist": "Kendrick Lamar",
+          "title": "Pray.mp3"
+        },
+        "url": "https://9.prigoana.lol/Kendrick Lamar - Pray.mp3"
+      },
+      {
+        "metaData": {
+          "artist": "Kanye West",
+          "title": "Nobody To Love [V6] (feat. Charlie Wilson, John Legend & Elon Rutberg).mp3"
+        },
+        "url": "https://9.prigoana.lol/Kanye West - Nobody To Love [V6] (feat. Charlie Wilson, John Legend & Elon Rutberg).mp3"
+      },
+      {
+        "metaData": {
+          "artist": "Kanye West",
+          "title": "Pressure [V9] (feat. Travis Scott).wav"
+        },
+        "url": "https://9.prigoana.lol/Kanye West - Pressure [V9] (feat. Travis Scott).wav"
+      },
+      {
+        "metaData": {
+          "artist": "Kanye West",
+          "title": "Wow [V1].mp3"
+        },
+        "url": "https://9.prigoana.lol/Kanye West - Wow [V1].mp3"
+      },
+      {
+        "metaData": {
+          "artist": "Kanye West",
+          "title": "Violent Nights [V3] (ref. Chance the Rapper) (feat. 070 Shake).mp3"
+        },
+        "url": "https://9.prigoana.lol/Kanye West - Violent Nights [V3] (ref. Chance the Rapper) (feat. 070 Shake).mp3"
+      },
+      {
+        "metaData": {
+          "artist": "Kanye West",
+          "title": "See Me Again [V3] (feat. Bon Iver, The WRLDFMS Tony Williams & Elly Jackson).mp3"
+        },
+        "url": "https://9.prigoana.lol/Kanye West - See Me Again [V3] (feat. Bon Iver, The WRLDFMS Tony Williams & Elly Jackson).mp3"
       }
     ],
   initialSkin: {
