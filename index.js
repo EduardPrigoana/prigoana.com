@@ -1011,24 +1011,24 @@ const webamp = new Webamp({
       },
       {
         "metaData": {
-          "artist": "6.prigoana.lol2.prigoana.lolPac",
+          "artist": "2Pac",
           "title": "California Love (Original Version)"
         },
-        "url": "https://6.prigoana.lol2.prigoana.lolPac - California Love (Original Version).flac"
+        "url": "https://6.prigoana.lol/2Pac%20-%20California%20Love%20(Original%20Version).flac"
       },
       {
         "metaData": {
-          "artist": "6.prigoana.lol2.prigoana.lolPac",
+          "artist": "2Pac",
           "title": "Dear Mama (Album Version (Explicit))"
         },
-        "url": "https://6.prigoana.lol2.prigoana.lolPac - Dear Mama (Album Version (Explicit)).flac"
+        "url": "https://6.prigoana.lol/2Pac - Dear Mama (Album Version (Explicit)).flac"
       },
       {
         "metaData": {
-          "artist": "6.prigoana.lol2.prigoana.lolPac",
+          "artist": "2Pac",
           "title": "Hit 'Em Up (Single Version)"
         },
-        "url": "https://6.prigoana.lol2.prigoana.lolPac - Hit 'Em Up (Single Version).flac"
+        "url": "https://6.prigoana.lol/2Pac - Hit 'Em Up (Single Version).flac"
       },
       {
         "metaData": {
@@ -1644,7 +1644,7 @@ const webamp = new Webamp({
           "artist": "Immortal Technique",
           "title": "Dance With The Devil"
         },
-        "url": "https://9.prigoana.lol/Immortal Technique - Dance with the Devil"
+        "url": "https://9.prigoana.lol/Immortal Technique - Dance with the Devil.flac"
       },
       {
         "metaData": {
