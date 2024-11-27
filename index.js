@@ -1691,79 +1691,128 @@ const webamp = new Webamp({
       {
         "metaData": {
           "artist": "Tyler, The Creator",
-          "title": "NUMBER, NUMBER.mp3"
+          "title": "NUMBER, NUMBER"
         },
         "url": "https://9.prigoana.lol/Tyler, The Creator - NUMBER, NUMBER.mp3"
       },
       {
         "metaData": {
           "artist": "Kanye West",
-          "title": "Dream Come True.mp3"
+          "title": "Dream Come True"
         },
         "url": "https://9.prigoana.lol/Kanye West - Dream Come True.mp3"
       },
       {
         "metaData": {
           "artist": "Kanye West",
-          "title": "Ghetto University [V17] (feat. Charlie Wilson, The WRLDFMS Tony Williams & John Legend).mp3"
+          "title": "Ghetto University [V17] (feat. Charlie Wilson, The WRLDFMS Tony Williams & John Legend)"
         },
         "url": "https://9.prigoana.lol/Kanye West - Ghetto University [V17] (feat. Charlie Wilson, The WRLDFMS Tony Williams & John Legend).mp3"
       },
       {
         "metaData": {
           "artist": "Kanye West",
-          "title": "Home [V2] (feat. John Legend).mp3"
+          "title": "Home [V2] (feat. John Legend)"
         },
         "url": "https://9.prigoana.lol/Kanye West - Home [V2] (feat. John Legend).mp3"
       },
       {
         "metaData": {
           "artist": "Kanye West",
-          "title": "Mama's Boy [V9] .mp3"
+          "title": "Mama's Boy [V9]"
         },
         "url": "https://9.prigoana.lol/Kanye West - Mama's Boy [V9] .mp3"
       },
       {
         "metaData": {
           "artist": "Kendrick Lamar",
-          "title": "Pray.mp3"
+          "title": "Pray"
         },
         "url": "https://9.prigoana.lol/Kendrick Lamar - Pray.mp3"
       },
       {
         "metaData": {
           "artist": "Kanye West",
-          "title": "Nobody To Love [V6] (feat. Charlie Wilson, John Legend & Elon Rutberg).mp3"
+          "title": "Nobody To Love [V6] (feat. Charlie Wilson, John Legend & Elon Rutberg)"
         },
         "url": "https://9.prigoana.lol/Kanye West - Nobody To Love [V6] (feat. Charlie Wilson, John Legend & Elon Rutberg).mp3"
       },
       {
         "metaData": {
           "artist": "Kanye West",
-          "title": "Pressure [V9] (feat. Travis Scott).wav"
+          "title": "Pressure [V9] (feat. Travis Scott)"
         },
         "url": "https://9.prigoana.lol/Kanye West - Pressure [V9] (feat. Travis Scott).wav"
       },
       {
         "metaData": {
           "artist": "Kanye West",
-          "title": "Wow [V1].mp3"
+          "title": "Wow [V1]"
         },
         "url": "https://9.prigoana.lol/Kanye West - Wow [V1].mp3"
       },
       {
         "metaData": {
           "artist": "Kanye West",
-          "title": "Violent Nights [V3] (ref. Chance the Rapper) (feat. 070 Shake).mp3"
+          "title": "Violent Nights [V3] (ref. Chance the Rapper) (feat. 070 Shake)"
         },
         "url": "https://9.prigoana.lol/Kanye West - Violent Nights [V3] (ref. Chance the Rapper) (feat. 070 Shake).mp3"
       },
       {
         "metaData": {
           "artist": "Kanye West",
-          "title": "See Me Again [V3] (feat. Bon Iver, The WRLDFMS Tony Williams & Elly Jackson).mp3"
+          "title": "See Me Again [V3] (feat. Bon Iver, The WRLDFMS Tony Williams & Elly Jackson)"
         },
         "url": "https://9.prigoana.lol/Kanye West - See Me Again [V3] (feat. Bon Iver, The WRLDFMS Tony Williams & Elly Jackson).mp3"
+      },
+      {
+        "metaData": {
+          "artist": "Kendrick Lamar",
+          "title": "reincarnated"
+        },
+        "url": "https://9.prigoana.lol/Kendrick Lamar - reincarnated.flac"
+      },
+      {
+        "metaData": {
+          "artist": "Kendrick Lamar",
+          "title": "Mortal Man"
+        },
+        "url": "https://prigoana.lol/10/Kendrick Lamar - Mortal Man.flac"
+      },
+      {
+        "metaData": {
+          "artist": "Joey Bada$",
+          "title": "Righteous Minds"
+        },
+        "url": "https://9.prigoana.lol/Joey Bada$ - Righteous Minds.flac"
+      },
+      {
+        "metaData": {
+          "artist": "Tyler, The Creator",
+          "title": "She"
+        },
+        "url": "https://prigoana.lol/10/Tyler, The Creator - She.flac"
+      },
+      {
+        "metaData": {
+          "artist": "Kali Uchis",
+          "title": "telepatía"
+        },
+        "url": "https://9.prigoana.lol/Kali Uchis - telepatía.flac"
+      },
+      {
+        "metaData": {
+          "artist": "Fetty Wap",
+          "title": "Trap Queen"
+        },
+        "url": "https://9.prigoana.lol/Fetty Wap - Trap Queen.flac"
+      },
+      {
+        "metaData": {
+          "artist": "Fetty Wap",
+          "title": "679 (feat. Remy Boyz)"
+        },
+        "url": "https://9.prigoana.lol/Fetty Wap - 679 (feat. Remy Boyz).flac"
       }
     ],
   initialSkin: {
