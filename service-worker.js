@@ -35,7 +35,7 @@ self.addEventListener('fetch', function(event) {
                 const fetchResponseClone = fetchResponse.clone();
 
                 // Check if the file ends with .mp3 or .flac
-                if (requestUrl.pathname.endsWith('.mp3') || requestUrl.pathname.endsWith('.flac')) {
+                if (requestUrl.pathname.endsWith('.txt') || requestUrl.pathname.endsWith('.iso')) {
                     caches.open(CACHE_NAME).then(function(cache) {
                         cache.put(event.request, fetchResponseClone);
                     });

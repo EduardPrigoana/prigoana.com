@@ -1,6 +1,5 @@
 body {
     user-select: none;
-    background-color: #000;
     color: #fff;
     font-family: monospace;
     cursor: url(./cursor.cur), auto;
@@ -12,8 +11,6 @@ img {
     pointer-events: none;
 }
 .terminal {
-    background-color: #000;
-    color: green;
     padding: 20px;
     text-align: center;
 }
@@ -56,7 +53,7 @@ img {
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #333;
+    background-color: #000;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;

@@ -1,121 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link id="favicon" rel="icon" type="image/x-icon" href="./favicon.png">
-    <link rel="manifest" href="./manifest.json">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>prigoana.lol</title>
-    <link rel="stylesheet" href="./common.css">
-    <script>
-        // Check if the Media Session API is supported
-        if ('mediaSession' in navigator) {
-            // Define media session actions
-            navigator.mediaSession.setActionHandler('play', function() {
-                webamp.play();
-            });
-
-            navigator.mediaSession.setActionHandler('pause', function() {
-                webamp.stop();
-            });
-
-            navigator.mediaSession.setActionHandler('previoustrack', function() {
-                webamp.previousTrack();
-            });
-
-            navigator.mediaSession.setActionHandler('nexttrack', function() {
-                webamp.nextTrack();
-            });
-        }
-    </script>
+  <link id="favicon" rel="icon" type="image/x-icon" href="./favicon.png">
+  <link rel="manifest" href="./manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prigoana.lol</title>
+  <link rel="stylesheet" href="./common.css">
+  <script>
+    if ('mediaSession' in navigator) {
+      const actions = {
+        play: () => webamp.play(),
+        pause: () => webamp.stop(),
+        previoustrack: () => webamp.previousTrack(),
+        nexttrack: () => webamp.nextTrack()
+      };
+      Object.entries(actions).forEach(([action, handler]) => 
+        navigator.mediaSession.setActionHandler(action, handler)
+      );
+    }
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #000;
+    }
+    * {
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    }
+    #background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: blur(10px);
+      z-index: -1;
+      transition: background-image 1s ease-in-out;
+    }
+    #album-cover img {
+      max-width: 100%;
+      height: auto;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    #album-cover img.visible {
+      opacity: 1;
+    }
+    #song {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    #song.updated {
+      opacity: 1;
+    }
+    #lastfm-widget, #widget {
+      padding: 20px;
+      color: white;
+    }
+    #gear-icon {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      cursor: url(./link.cur), auto;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="terminal">
-            <ul class="navbar">
-                <li><a href="./projects">projects</a></li>
-                <li><a href="./about">about</a></li>
-                <li><a href="./guides">guides</a></li>
-                <li><a href="./media">media</a></li>
-                <!-- New Disguise Dropdown -->
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">disguise</a>
-                    <div class="dropdown-content">
-                        <a href="#" data-title="prigoana.lol" data-icon="./favicon.png">Base</a>
-                        <a href="#" data-title="Home" data-icon="https://www.gstatic.com/classroom/ic_product_classroom_144.png">Classroom</a>
-                        <a href="#" data-title="Home - Google Drive" data-icon="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png">Drive</a>
-                        <a href="#" data-title="Google Docs" data-icon="https://ssl.gstatic.com/docs/documents/images/kix-favicon-2023q4.ico">Docs</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </header>
-    <main>
-        <p style="height: 200px;">&nbsp;</p>
-        <div id="app"></div>
-        <p style="height: 230px;">&nbsp;</p>
-        <div id="lastfm-widget"></div>
-        <div id="widget">
-            <p>Last played song</p>
-            <span id="song"></span><br>
-            <div id="album-cover"></div>
-        </div>
-    </main>
-    <footer>
-    </footer>
-    <script src="https://unpkg.com/webamp/built/webamp.bundle.min.js"></script>
-    <script src="https://unpkg.com/butterchurn/lib/butterchurn.min.js"></script>
-    <script src="https://unpkg.com/butterchurn-presets/lib/butterchurnPresets.min.js"></script>
-    <script src="./index.js"></script>
-    <script>
-        // Existing Last.fm Fetch Script
-        let url = 'https://lastfm-last-played.biancarosa.com.br/yetiuard/latest-song';
-        let songElement = document.querySelector('#song');
-        let albumCoverElement = document.querySelector('#album-cover');
+  <div id="background"></div>
+  <header>
+    <div class="terminal">
+      <ul class="navbar">
+        <li><a href="./projects">projects</a></li>
+        <li><a href="./about">about</a></li>
+        <li><a href="./guides">guides</a></li>
+        <li><a href="./media">media</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropbtn">disguise</a>
+          <div class="dropdown-content">
+            <a href="#" data-title="prigoana.lol" data-icon="./favicon.png">Base</a>
+            <a href="#" data-title="Home" data-icon="https://www.gstatic.com/classroom/ic_product_classroom_144.png">Classroom</a>
+            <a href="#" data-title="Google Drive" data-icon="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png">Drive</a>
+            <a href="#" data-title="Google Docs" data-icon="https://ssl.gstatic.com/docs/documents/images/kix-favicon-2023q4.ico">Docs</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </header>
+  <svg id="gear-icon" onclick="openUsernamePrompt()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+    <defs>
+      <filter id="drop-shadow" x="-50%" y="-50%" width="200%" height="200%">
+        <feDropShadow dx="10" dy="10" stdDeviation="15" flood-color="black"/>
+      </filter>
+    </defs>
+    <path d="M495.9 166.6c3.2 8.7 .5 18.4-6.4 24.6l-43.3 39.4c1.1 8.3 1.7 16.8 1.7 25.4s-.6 17.1-1.7 25.4l43.3 39.4c6.9 6.2 9.6 15.9 6.4 24.6c-4.4 11.9-9.7 23.3-15.8 34.3l-4.7 8.1c-6.6 11-14 21.4-22.1 31.2c-5.9 7.2-15.7 9.6-24.5 6.8l-55.7-17.7c-13.4 10.3-28.2 18.9-44 25.4l-12.5 57.1c-2 9.1-9 16.3-18.2 17.8c-13.8 2.3-28 3.5-42.5 3.5s-28.7-1.2-42.5-3.5c-9.2-1.5-16.2-8.7-18.2-17.8l-12.5-57.1c-15.8-6.5-30.6-15.1-44-25.4L83.1 425.9c-8.8 2.8-18.6 .3-24.5-6.8c-8.1-9.8-15.5-20.2-22.1-31.2l-4.7-8.1c-6.1-11-11.4-22.4-15.8-34.3c-3.2-8.7-.5-18.4 6.4-24.6l43.3-39.4C64.6 273.1 64 264.6 64 256s.6-17.1 1.7-25.4L22.4 191.2c-6.9-6.2-9.6-15.9-6.4-24.6c4.4-11.9 9.7-23.3 15.8-34.3l4.7-8.1c6.6-11 14-21.4 22.1-31.2c5.9-7.2 15.7-9.6 24.5-6.8l55.7 17.7c13.4-10.3 28.2-18.9 44-25.4l12.5-57.1c2-9.1 9-16.3 18.2-17.8C227.3 1.2 241.5 0 256 0s28.7 1.2 42.5 3.5c9.2 1.5 16.2 8.7 18.2 17.8l12.5 57.1c15.8 6.5 30.6 15.1 44 25.4l55.7-17.7c8.8-2.8 18.6-.3 24.5 6.8c8.1 9.8 15.5 20.2 22.1 31.2l4.7 8.1c6.1 11 11.4 22.4 15.8 34.3zM256 336a80 80 0 1 0 0-160 80 80 0 1 0 0 160z" filter="url(#drop-shadow)"/>
+  </svg><p style="height: 200px;"></p>
+  <div id="app"></div><p style="height: 170px;"></p>
+  <div id="lastfm-widget"></div>
+  <div id="widget">
+    <p>Last played song</p>
+    <span id="song"></span><br>
+    <div id="album-cover"></div>
+  </div>
+  
+  <script src="https://unpkg.com/webamp/built/webamp.bundle.min.js"></script>
+  <script src="https://unpkg.com/butterchurn/lib/butterchurn.min.js"></script>
+  <script src="https://unpkg.com/butterchurn-presets/lib/butterchurnPresets.min.js"></script>
+  <script src="./index.js"></script>
+  
+  <script>
+    let username = localStorage.getItem('lastfmUsername') || 'yetiuard';
+    const url = `https://lastfm-last-played.biancarosa.com.br/${username}/latest-song`;
+    const songElement = document.querySelector('#song');
+    const albumCoverElement = document.querySelector('#album-cover');
+    const backgroundElement = document.getElementById('background');
+    const placeholderImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=";
+    let previousAlbumImage = "";
 
-        fetch(url)
-            .then(response => response.json())
-            .then(json => {
-                songElement.innerHTML = `${json.track.name} - ${json.track.artist['#text']}`;
-                songElement.innerHTML += `<div>${json.track.album['#text']}</div>`;
-                albumCoverElement.innerHTML = `<img src="${json.track.image[2]['#text']}" alt="Album Cover">`;
-            });
+    function updateSongDisplay(track) {
+      const { name, artist, album, image } = track;
+      songElement.classList.remove('updated');
+      songElement.innerHTML = `${name} - ${artist['#text']}<div>${album['#text']}</div>`;
+      setTimeout(() => songElement.classList.add('updated'), 50);
+      
+      let albumImage = image[2]['#text'] || placeholderImage;
+      if (albumImage === 'https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png') {
+        albumImage = placeholderImage;
+      }
+      if (albumImage !== previousAlbumImage) {
+        const currentImage = albumCoverElement.querySelector('img');
+        if (currentImage) currentImage.classList.remove('visible');
+        albumCoverElement.innerHTML = `<img src="${albumImage}" alt="Album Cover">`;
+        const newImage = albumCoverElement.querySelector('img');
+        newImage.onload = () => newImage.classList.add('visible');
+        backgroundElement.style.backgroundImage = `url(${albumImage})`;
+        previousAlbumImage = albumImage;
+      } else {
+        backgroundElement.style.backgroundImage = `url(${albumImage})`;
+      }
+    }
 
-        // Service Worker Registration
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./service-worker.js')
-                .then(registration => {
-                    console.log('Service Worker registered with scope:', registration.scope);
-                })
-                .catch(error => {
-                    console.log('Service Worker registration failed:', error);
-                });
+    async function fetchLastPlayedSong() {
+      try {
+        const response = await fetch(url);
+        const { track } = await response.json();
+        if (!window.lastPlayedSong || track.name !== window.lastPlayedSong.name) {
+          window.lastPlayedSong = track;
+          updateSongDisplay(track);
         }
+      } catch (error) {
+        console.error('Error fetching LastFM data:', error);
+      }
+    }
 
-        // Disguise Dropdown Functionality
-        document.querySelectorAll('.dropdown-content a[data-title]').forEach(function(element) {
-            element.addEventListener('click', function(event) {
-                event.preventDefault();
-                const newTitle = this.getAttribute('data-title');
-                const newIcon = this.getAttribute('data-icon');
+    fetchLastPlayedSong();
+    setInterval(fetchLastPlayedSong, 3000);
 
-                // Change the document title
-                document.title = newTitle;
+    function openUsernamePrompt() {
+      const newUsername = prompt('Enter your Last.fm username:', username);
+      if (newUsername && newUsername !== username) {
+        username = newUsername;
+        localStorage.setItem('lastfmUsername', username);
+        window.location.reload();
+      }
+    }
 
-                // Change the favicon
-                const favicon = document.getElementById('favicon');
-                if (favicon) {
-                    favicon.href = newIcon;
-                } else {
-                    const link = document.createElement('link');
-                    link.id = 'favicon';
-                    link.rel = 'icon';
-                    link.type = 'image/x-icon';
-                    link.href = newIcon;
-                    document.head.appendChild(link);
-                }
-            });
-        });
-    </script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js').catch(error => 
+        console.log('Service Worker registration failed:', error)
+      );
+    }
+
+    document.querySelectorAll('.dropdown-content a[data-title]').forEach(element => {
+      element.addEventListener('click', function (event) {
+        event.preventDefault();
+        const newTitle = element.getAttribute('data-title');
+        const newIcon = element.getAttribute('data-icon');
+        document.title = newTitle;
+        document.getElementById('favicon').href = newIcon;
+      });
+    });
+  </script>
 </body>
 </html>

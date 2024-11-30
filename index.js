@@ -1886,6 +1886,7 @@ const webamp = new Webamp({
     butterchurnOpen: true,
   },
 });
+
 // Define the target URL to replace and the Base64 replacement
 const targetURL = "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png";
 const blackPixel = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wQAAwAB/ly9ENkAAAAASUVORK5CYII=";

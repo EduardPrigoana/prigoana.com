@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link id="favicon" rel="icon" type="image/x-icon" href="./favicon.png">
+    <link rel="manifest" href="./manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>prigoana.lol</title>
+    <link rel="stylesheet" href="./common.css">
+    <script>
+        // Check if the Media Session API is supported
+        if ('mediaSession' in navigator) {
+            // Define media session actions
+            navigator.mediaSession.setActionHandler('play', function() {
+                webamp.play();
+            });
+
+            navigator.mediaSession.setActionHandler('pause', function() {
+                webamp.stop();
+            });
+
+            navigator.mediaSession.setActionHandler('previoustrack', function() {
+                webamp.previousTrack();
+            });
+
+            navigator.mediaSession.setActionHandler('nexttrack', function() {
+                webamp.nextTrack();
+            });
+        }
+    </script>
+    <style>
+        /* Apply general background and styling */
+        body {
+            background-color: #000; /* Fallback color for the body */
+        }
+
+        /* The background container for the album cover image */
+        #background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: blur(10px); /* Apply Gaussian blur to the background */
+            z-index: -1; /* Ensure the background stays behind the content */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="terminal">
+            <ul class="navbar">
+                <li><a href="./projects">projects</a></li>
+                <li><a href="./about">about</a></li>
+                <li><a href="./guides">guides</a></li>
+                <li><a href="./media">media</a></li>
+                <!-- New Disguise Dropdown -->
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">disguise</a>
+                    <div class="dropdown-content">
+                        <a href="#" data-title="prigoana.lol" data-icon="./favicon.png">Base</a>
+                        <a href="#" data-title="Home" data-icon="https://www.gstatic.com/classroom/ic_product_classroom_144.png">Classroom</a>
+                        <a href="#" data-title="Home - Google Drive" data-icon="https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png">Drive</a>
+                        <a href="#" data-title="Google Docs" data-icon="https://ssl.gstatic.com/docs/documents/images/kix-favicon-2023q4.ico">Docs</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <p style="height: 200px;">&nbsp;</p>
+        <div id="app"></div>
+        <p style="height: 230px;">&nbsp;</p>
+        <div id="lastfm-widget"></div>
+        <div id="widget">
+            <p>Last played song</p>
+            <span id="song"></span><br>
+            <div id="album-cover"></div>
+        </div>
+    </main>
+    <footer>
+    </footer>
+    <script src="https://unpkg.com/webamp/built/webamp.bundle.min.js"></script>
+    <script src="https://unpkg.com/butterchurn/lib/butterchurn.min.js"></script>
+    <script src="https://unpkg.com/butterchurn-presets/lib/butterchurnPresets.min.js"></script>
+    <script src="./index.js"></script>
+    <script>
+        // Existing Last.fm Fetch Script
+        let url = 'https://lastfm-last-played.biancarosa.com.br/yetiuard/latest-song';
+        let songElement = document.querySelector('#song');
+        let albumCoverElement = document.querySelector('#album-cover');
+
+        fetch(url)
+            .then(response => response.json())
+            .then(json => {
+                songElement.innerHTML = `${json.track.name} - ${json.track.artist['#text']}`;
+                songElement.innerHTML += `<div>${json.track.album['#text']}</div>`;
+
+                // Get album image URL
+                let albumImage = json.track.image[2]['#text'] || 'https://via.placeholder.com/150/000000/FFFFFF/?text=No+Cover'; // Fallback image
+
+                // Update the album cover display
+                albumCoverElement.innerHTML = `<img src="${albumImage}" alt="Album Cover">`;
+
+                // Set the background image for the #background element and apply blur effect
+                let backgroundElement = document.getElementById('background');
+                backgroundElement.style.backgroundImage = `url(${albumImage})`; // Set album image as background
+            });
+
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.log('Service Worker registration failed:', error);
+                });
+        }
+
+        // Disguise Dropdown Functionality
+        document.querySelectorAll('.dropdown-content a[data-title]').forEach(function(element) {
+            element.addEventListener('click', function(event) {
+                event.preventDefault();
+                const newTitle = this.getAttribute('data-title');
+                const newIcon = this.getAttribute('data-icon');
+
+                // Change the document title
+                document.title = newTitle;
+
+                // Change the favicon
+                const favicon = document.getElementById('favicon');
+                if (favicon) {
+                    favicon.href = newIcon;
+                } else {
+                    const link = document.createElement('link');
+                    link.id = 'favicon';
+                    link.rel = 'icon';
+                    link.type = 'image/x-icon';
+                    link.href = newIcon;
+                    document.head.appendChild(link);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
