@@ -1494,24 +1494,24 @@ const webamp = new Webamp({
       },
       {
         "metaData": {
-          "artist": "Outkast",
+          "artist": "OutKast",
           "title": "So Fresh, So Clean"
         },
-        "url": "https://8.prigoana.lol/Outkast - So Fresh, So Clean.flac"
+        "url": "https://8.prigoana.lol/OutKast - So Fresh, So Clean.flac"
       },
       {
         "metaData": {
-          "artist": "Outkast",
+          "artist": "OutKast",
           "title": "Spaghetti Junction"
         },
-        "url": "https://8.prigoana.lol/Outkast - Spaghetti Junction.flac"
+        "url": "https://8.prigoana.lol/OutKast - Spaghetti Junction.flac"
       },
       {
         "metaData": {
-          "artist": "Outkast with Khujo Goodie",
+          "artist": "OutKast with Khujo Goodie",
           "title": "Gasoline Dreams"
         },
-        "url": "https://8.prigoana.lol/Outkast with Khujo Goodie - Gasoline Dreams.flac"
+        "url": "https://8.prigoana.lol/OutKast with Khujo Goodie - Gasoline Dreams.flac"
       },
       {
         "metaData": {
@@ -1620,17 +1620,17 @@ const webamp = new Webamp({
       },
       {
         "metaData": {
-          "artist": "Outkast",
+          "artist": "OutKast",
           "title": "B.O.B.  (Bombs Over Baghdad)"
         },
-        "url": "https://9.prigoana.lol/Outkast - B.O.B.  (Bombs Over Baghdad).flac"
+        "url": "https://9.prigoana.lol/OutKast - B.O.B.  (Bombs Over Baghdad).flac"
       },
       {
         "metaData": {
-          "artist": "Outkast",
+          "artist": "OutKast",
           "title": "Xplosion"
         },
-        "url": "https://9.prigoana.lol/Outkast - Xplosion.flac"
+        "url": "https://9.prigoana.lol/OutKast - Xplosion.flac"
       },
       {
         "metaData": {
@@ -1648,10 +1648,10 @@ const webamp = new Webamp({
       },
       {
         "metaData": {
-          "artist": "Outkast",
+          "artist": "OutKast",
           "title": "ATLiens"
         },
-        "url": "https://9.prigoana.lol/Outkast - ATLiens.flac"
+        "url": "https://9.prigoana.lol/OutKast - ATLiens.flac"
       },
       {
         "metaData": {
@@ -1662,10 +1662,10 @@ const webamp = new Webamp({
       },
       {
         "metaData": {
-          "artist": "Outkast",
+          "artist": "OutKast",
           "title": "Ms. Jackson"
         },
-        "url": "https://9.prigoana.lol/Outkast - Ms. Jackson.flac"
+        "url": "https://9.prigoana.lol/OutKast - Ms. Jackson.flac"
       },
       {
         "metaData": {
@@ -1813,6 +1813,34 @@ const webamp = new Webamp({
           "title": "679 (feat. Remy Boyz)"
         },
         "url": "https://9.prigoana.lol/Fetty Wap - 679 (feat. Remy Boyz).flac"
+      },
+      {
+        "metaData":{
+          "artist": "Wee",
+          "title": "Aeroplane (Reprise)"
+        },
+        "url": "https://prigoana.lol/10/Wee - Aeroplane (Reprise).flac"
+      },
+      {
+        "metaData":{
+          "artist": "2Pac",
+          "title": "Made Niggaz"
+        },
+        "url": "https://prigoana.lol/10/2Pac - Made Niggaz.flac"
+      },
+      {
+        "metaData":{
+          "artist": "OutKast",
+          "title": "Player's Ball"
+        },
+        "url": "https://prigoana.lol/10/OutKast - Player's Ball (Album Version).flac"
+      },
+      {
+        "metaData":{
+          "artist": "Junie Morrison",
+          "title": "Suzie Thundertussy"
+        },
+        "url": "https://prigoana.lol/10/Junie Morrison - Suzie Thundertussy.flac"
       }
     ],
   initialSkin: {
@@ -1858,4 +1886,25 @@ const webamp = new Webamp({
     butterchurnOpen: true,
   },
 });
+// Define the target URL to replace and the Base64 replacement
+const targetURL = "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png";
+const blackPixel = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wQAAwAB/ly9ENkAAAAASUVORK5CYII=";
+
+// Function to replace image sources dynamically
+function replaceImages() {
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+        if (img.src === targetURL) {
+            img.src = blackPixel;
+        }
+    });
+}
+
+// Observe changes to the DOM and apply replacements dynamically
+const observer = new MutationObserver(() => replaceImages());
+observer.observe(document.body, { childList: true, subtree: true });
+
+// Initial call to replace images already in the DOM
+replaceImages();
+
 webamp.renderWhenReady(document.getElementById("app"));
