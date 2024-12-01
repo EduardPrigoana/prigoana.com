@@ -1665,7 +1665,7 @@ const webamp = new Webamp({
           "artist": "OutKast",
           "title": "Ms. Jackson"
         },
-        "url": "https://9.prigoana.lol/OutKast - Ms. Jackson.flac"
+        "url": "https://9.prigoana.lol/Outkast%20-%20Ms.%20Jackson.flac"
       },
       {
         "metaData": {
@@ -1819,7 +1819,7 @@ const webamp = new Webamp({
           "artist": "Wee",
           "title": "Aeroplane (Reprise)"
         },
-        "url": "https://prigoana.lol/10/Wee - Aeroplane (Reprise).flac"
+        "url": "https://prigoana.lol/10/Wee%20-%20Aeroplane%20(Reprise).flac"
       },
       {
         "metaData":{
@@ -1833,7 +1833,7 @@ const webamp = new Webamp({
           "artist": "OutKast",
           "title": "Player's Ball"
         },
-        "url": "https://prigoana.lol/10/OutKast - Player's Ball (Album Version).flac"
+        "url": "https://prigoana.lol/10/Outkast%20-%20Player's%20Ball%20(Album%20Version).flac"
       },
       {
         "metaData":{
