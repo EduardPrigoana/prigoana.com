@@ -29,6 +29,7 @@ img {
 }
 .terminal li {
     margin: 0 15px;
+    margin-top: 35%;
 }
 .terminal a {
     color: #fff;
