@@ -1497,21 +1497,21 @@ const webamp = new Webamp({
           "artist": "OutKast",
           "title": "So Fresh, So Clean"
         },
-        "url": "https://8.prigoana.lol/OutKast - So Fresh, So Clean.flac"
+        "url": "https://8.prigoana.lol/Outkast - So Fresh, So Clean.flac"
       },
       {
         "metaData": {
           "artist": "OutKast",
           "title": "Spaghetti Junction"
         },
-        "url": "https://8.prigoana.lol/OutKast - Spaghetti Junction.flac"
+        "url": "https://8.prigoana.lol/Outkast - Spaghetti Junction.flac"
       },
       {
         "metaData": {
           "artist": "OutKast with Khujo Goodie",
           "title": "Gasoline Dreams"
         },
-        "url": "https://8.prigoana.lol/OutKast with Khujo Goodie - Gasoline Dreams.flac"
+        "url": "https://8.prigoana.lol/Outkast with Khujo Goodie - Gasoline Dreams.flac"
       },
       {
         "metaData": {
@@ -1623,14 +1623,14 @@ const webamp = new Webamp({
           "artist": "OutKast",
           "title": "B.O.B.  (Bombs Over Baghdad)"
         },
-        "url": "https://9.prigoana.lol/OutKast - B.O.B.  (Bombs Over Baghdad).flac"
+        "url": "https://9.prigoana.lol/Outkast - B.O.B.  (Bombs Over Baghdad).flac"
       },
       {
         "metaData": {
           "artist": "OutKast",
           "title": "Xplosion"
         },
-        "url": "https://9.prigoana.lol/OutKast - Xplosion.flac"
+        "url": "https://9.prigoana.lol/OutKast-%20Xplosion.flac"
       },
       {
         "metaData": {
@@ -1651,7 +1651,7 @@ const webamp = new Webamp({
           "artist": "OutKast",
           "title": "ATLiens"
         },
-        "url": "https://9.prigoana.lol/OutKast - ATLiens.flac"
+        "url": "https://9.prigoana.lol/OutKast- ATLiens.flac"
       },
       {
         "metaData": {

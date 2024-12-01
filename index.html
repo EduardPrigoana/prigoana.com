@@ -114,7 +114,6 @@
   <script src="https://unpkg.com/butterchurn/lib/butterchurn.min.js"></script>
   <script src="https://unpkg.com/butterchurn-presets/lib/butterchurnPresets.min.js"></script>
   <script src="./index.js"></script>
-  
   <script>
     let username = localStorage.getItem('lastfmUsername') || 'yetiuard';
     const url = `https://lastfm-last-played.biancarosa.com.br/${username}/latest-song`;
@@ -123,7 +122,7 @@
     const backgroundElement = document.getElementById('background');
     const placeholderImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=";
     let previousAlbumImage = "";
-
+  
     function updateSongDisplay(track) {
       const { name, artist, album, image } = track;
       songElement.classList.remove('updated');
@@ -146,7 +145,7 @@
         backgroundElement.style.backgroundImage = `url(${albumImage})`;
       }
     }
-
+  
     async function fetchLastPlayedSong() {
       try {
         const response = await fetch(url);
@@ -159,10 +158,10 @@
         console.error('Error fetching LastFM data:', error);
       }
     }
-
+  
     fetchLastPlayedSong();
     setInterval(fetchLastPlayedSong, 3000);
-
+  
     function openUsernamePrompt() {
       const newUsername = prompt('Enter your Last.fm username:', username);
       if (newUsername && newUsername !== username) {
@@ -171,13 +170,13 @@
         window.location.reload();
       }
     }
-
+  
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./service-worker.js').catch(error => 
         console.log('Service Worker registration failed:', error)
       );
     }
-
+  
     document.querySelectorAll('.dropdown-content a[data-title]').forEach(element => {
       element.addEventListener('click', function (event) {
         event.preventDefault();
@@ -187,41 +186,22 @@
         document.getElementById('favicon').href = newIcon;
       });
     });
+  
+    // New onTrackDidChange functionality
+    const unsubscribe = webamp.onTrackDidChange((trackInfo) => {
+      if (trackInfo && trackInfo.metaData) {
+        const { title = "Unknown Title", artist = "Unknown Artist" } = trackInfo.metaData;
+        console.log("New track playing:", { title, artist });
+      } else if (trackInfo) {
+        console.log("New track URL:", trackInfo.url);
+      } else {
+        console.log("No track is currently playing.");
+      }
+    });
+  
+    // Example: Unsubscribe when no longer needed
+    // unsubscribe();
   </script>
-<script>
-let currentSong = {
-  title: '',
-  artist: ''
-};
-
-// Update currentSong with the track details every time the track changes
-webamp.onTrackDidChange((trackInfo) => {
-  if (trackInfo) {
-    currentSong = {
-      title: trackInfo.metaData.title || '',
-      artist: trackInfo.metaData.artist || ''
-    };
-    console.log('Currently playing:', currentSong);
-  } else {
-    // If no track is playing, set the song to empty values
-    currentSong = {
-      title: '',
-      artist: ''
-    };
-    console.log('No track is currently playing');
-  }
-});
-
-// You can check the current song at any time
-function getCurrentSong() {
-  return currentSong;
-}
-
-// Example of how you can get the current song manually:
-setInterval(() => {
-  console.log('Current Song:', getCurrentSong());
-}, 5000); // Logs the current song every 5 seconds
-
-</script>
+  
 </body>
 </html>
