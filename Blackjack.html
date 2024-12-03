@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<link rel="stylesheet" type="text/css" href="./Blackjack_!_files/banner-styles.css">
+<link rel="stylesheet" type="text/css" href="./Blackjack_!_files/iconochive.css">
+  <link rel="icon" type="image/x-icon" href="https://prigoana.lol/favicon.png">
+  <title>Blackjack</title>
+  <style>
+  body{
+              zoom: 175%;
+  }
+    * {
+      font-family: monospace;
+    }
+
+    #htbutton {
+      visibility: hidden;
+    }
+
+    #stbutton {
+      visibility: hidden;
+    }
+
+    #ddbutton {
+      visibility: hidden;
+    }
+
+    body {
+      background-color: black;
+      color: white;
+    }
+
+    button {
+      background-color: white;
+      border: none;
+      color: black;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+<center>
+  <button class="debutton" onclick="deal(1)" style="visibility: visible;">Bet $1</button>
+  <button class="debutton" onclick="deal(5)" style="visibility: visible;">Bet $5</button>
+  <button class="debutton" onclick="deal(10)" style="visibility: visible;">Bet $10</button>
+  <button class="debutton" onclick="deal(20)" style="visibility: visible;">Bet $20</button><br>
+  <div id="playermoney">$98</div>
+  DEALER'S CARDS:<div id="dealercards">.---..---..---.<br>|3&nbsp; ||Q&nbsp; ||7&nbsp; |<br>| @ || @ || % |<br>| &nbsp;3|| &nbsp;Q|| &nbsp;7|<br>'---''---''---'<br></div>
+  DEALER'S SCORE:<span id="dealerscore">20</span><br>
+  YOUR CARDS:<div id="playercards">.---..---..---.<br>|6&nbsp; ||8&nbsp; ||Q&nbsp; |<br>| % || * || % |<br>| &nbsp;6|| &nbsp;8|| &nbsp;Q|<br>'---''---''---'<br></div>
+  YOUR SCORE:<span id="playerscore">24</span><br>
+  <button id="htbutton" onclick="hit()" style="visibility: hidden;">HIT</button>
+  <button id="stbutton" onclick="stand()" style="visibility: hidden;">Stand</button>
+  <button id="ddbutton" onclick="doubledown()" style="visibility: hidden;">Double Down -$1</button>
+
+  <div id="message">YOU BUSTED!</div>
+</center>
+<script>
+  var money = 100;
+  var deck = [];
+  var dealercards = [];
+  var playercards = [];
+  var dealersuits = [];
+  var playersuits = [];
+  var bet = 10;
+  var elems = document.getElementsByClassName('debutton');
+
+  // Deal button clicked
+  function deal(playerbet) {
+    // Make sure player has enough money to play
+    if (playerbet > money) {
+      document.getElementById("message").innerHTML = "Not enough money!";
+      return true;
+    }
+    deck = [];
+    dealercards = [];
+    playercards = [];
+    pullcard(0);
+    pullcard(0);
+    pullcard(1);
+    pullcard(1);
+    // Transfers the bet amount to the bet variable
+    bet = playerbet;
+    // Sets play buttons back to visible and hides bet buttons
+    document.getElementById("ddbutton").style.visibility = "visible";
+    document.getElementById("stbutton").style.visibility = "visible";
+    document.getElementById("htbutton").style.visibility = "visible";
+    // Hides bet buttons
+    for (var i = 0; i != elems.length; ++i) {
+      elems[i].style.visibility = "hidden";
+    }
+    // Changes under message to display the bet amount
+    document.getElementById("message").innerHTML = "You bet $" + bet;
+    // Takes bet amount from money
+    money -= bet;
+    // Updates money html
+    document.getElementById("playermoney").innerHTML = "$" + money;
+    // Updates double down cost
+    document.getElementById("ddbutton").innerHTML = "Double Down -$" + bet;
+  }
+
+  // Pulls a card for 0 (dealer) or 1 (player)
+  function pullcard(playernum) {
+    var keepgoing = true;
+    var cardpull;
+    var suit;
+    var value = 0;
+    // Makes sure all cards haven't been played yet.
+    if (deck.length < 52) {
+      while (keepgoing) {
+        cardpull = Math.floor((Math.random() * 52) + 1);
+        keepgoing = false;
+        // Checks to see if that card was pulled from the deck previously
+        for (i = 0; i < deck.length; i++) {
+          if (cardpull == deck[i]) {
+            keepgoing = true;
+          }
+        }
+      }
+      deck.push(cardpull);
+      // Checks the suit of the card
+      if (cardpull <= 13) {
+        suit = "@"
+      } else if (cardpull <= 26) {
+        suit = "*"
+        cardpull -= 13;
+      } else if (cardpull <= 39) {
+        suit = "%"
+        cardpull -= 26;
+      } else if (cardpull <= 52) {
+        suit = "!"
+        cardpull -= 39;
+      }
+      // Checks who the game is pulling cards for and pushes the card value and suit into the arrays
+      if (playernum == 0) {
+        dealercards.push(cardpull);
+        dealersuits.push(suit);
+        // Player can't know the value of the dealer's cards, replace with a -- placeholder
+        document.getElementById("dealerscore").innerHTML = "--";
+        if (dealercards.length > 1) {
+          var passcards = dealercards.slice(1, 2);
+          var passsuits = dealersuits.slice(1, 2);
+          document.getElementById("dealercards").innerHTML = drawcards(passcards, dealersuits);
+        }
+      }
+      if (playernum == 1) {
+        playercards.push(cardpull);
+        playersuits.push(suit);
+        document.getElementById("playerscore").innerHTML = calcscore(playercards);
+        document.getElementById("playercards").innerHTML = drawcards(playercards, playersuits);
+      }
+      return true;
+    }
+    return "ERROR";
+  }
+
+  // Hit button clicked
+  function hit() {
+    // Adds a card for the player
+    pullcard(1);
+    document.getElementById("ddbutton").style.visibility = "hidden";
+    // Calculate the score to see if the game is over
+    if (calcscore(playercards) > 21) {
+      stand();
+    }
+  }
+
+  // Stand button clicked (ends round)
+  function stand() {
+    // Hides play buttons, reveals bet buttons
+    document.getElementById("ddbutton").style.visibility = "hidden";
+    document.getElementById("stbutton").style.visibility = "hidden";
+    document.getElementById("htbutton").style.visibility = "hidden";
+    for (var i = 0; i != elems.length; ++i) {
+      elems[i].style.visibility = "visible"; // Hidden has to be a string
+    }
+    // Plays the dealer's turn, hits up to 17 then stands
+    dealerplay();
+    // Calculates the scores and compares them
+    var playerend = calcscore(playercards);
+    var dealerend = calcscore(dealercards);
+    if (playerend > 21) {
+      document.getElementById("message").innerHTML = "YOU BUSTED!";
+    } else if (dealerend > 21 || playerend > dealerend) {
+      document.getElementById("message").innerHTML = "YOU WIN! $" + 2 * bet;
+      money += 2 * bet;
+    } else if (dealerend == playerend) {
+      document.getElementById("message").innerHTML = "PUSH! $" + bet;
+      money += bet;
+    } else {
+      document.getElementById("message").innerHTML = "DEALER WINS!";
+    }
+    document.getElementById("playermoney").innerHTML = "$" + money;
+  }
+
+  // Double down button clicked, hits once then immediately stands after doubling the bet.
+  function doubledown() {
+    // Makes sure the player has enough money to double down
+    if (money < bet) {
+      document.getElementById("message").innerHTML = "Not enough money to double down!";
+      return true;
+    }
+    // Doubles the bet
+    money -= bet;
+    bet *= 2;
+    hit();
+    stand();
+  }
+
+  // Called once a stand() is reached, could shove this code in stand as that's the only time it's called, but I kind of like it separate
+  function dealerplay() {
+    while (calcscore(dealercards) < 17) {
+      pullcard(0);
+    }
+    document.getElementById("dealerscore").innerHTML = calcscore(dealercards);
+    document.getElementById("dealercards").innerHTML = drawcards(dealercards, dealersuits);
+  }
+
+  // Takes in an array of card values and calculates the score
+  function calcscore(cards) {
+    var aces = 0;
+    var endscore = 0;
+
+    // Count cards and check for ace
+    for (i = 0; i < cards.length; i++) {
+      if (cards[i] == 1 && aces == 0) {
+        aces++;
+      } else { // If it's not an ace
+        if (cards[i] >= 10) {
+          endscore += 10;
+        } else {
+          endscore += cards[i];
+        }
+      }
+    }
+
+    // Add ace back in if it existed
+    if (aces == 1) {
+      if (endscore + 11 > 21) {
+        endscore++;
+      } else {
+        endscore += 11;
+      }
+    }
+    return endscore;
+  }
+
+  // ASCII drawing, takes the number of cards in the array and draws 5 lines
+  function drawcards(cards, suits) {
+    var lines = ["", "", "", "", ""];
+    var value = [];
+    if (cards.length == 1) { // If only one card is passed we draw the first card face down
+      lines = [".---.", "|///|", "|///|", "|///|", "'---'"];
+    }
+    // Topline
+    for (i = 0; i < cards.length; i++) {
+      lines[0] += ".---.";
+    }
+    lines[0] += "</br>";
+
+    // 2nd line (contains value)
+    for (i = 0; i < cards.length; i++) {
+      lines[1] += "|" + cardvalue(cards[i]);
+      if (cardvalue(cards[i]) == 10) {
+        lines[1] += " |";
+      } else {
+        lines[1] += "&nbsp; |";
+      }
+    }
+    lines[1] += "</br>";
+
+    // 3rd line (contains suit)
+    for (i = 0; i < cards.length; i++) {
+      lines[2] += "| " + suits[i] + " |";
+    }
+    lines[2] += "</br>";
+
+    // 4th line (contains value)
+    for (i = 0; i < cards.length; i++) {
+      if (cardvalue(cards[i]) == 10) {
+        lines[3] += "| " + cardvalue(cards[i]) + "|";
+      } else {
+        lines[3] += "| &nbsp;" + cardvalue(cards[i]) + "|";
+      }
+    }
+    lines[3] += "</br>";
+
+    // Bottom line
+    for (i = 0; i < cards.length; i++) {
+      lines[4] += "'---'";
+    }
+    lines[4] += "</br>";
+    return lines[0] + lines[1] + lines[2] + lines[3] + lines[4];
+  }
+
+  // Fixes for ace jack queen and king cards from their 1 11 12 13 values, used for drawing ASCII
+  function cardvalue(cardnum) {
+    if (cardnum == 1) {
+      return "A";
+    }
+    if (cardnum == 11) {
+      return "J";
+    }
+    if (cardnum == 12) {
+      return "Q";
+    }
+    if (cardnum == 13) {
+      return "K";
+    } else return cardnum;
+  }
+</script>
+
+
+
+</body></html>
