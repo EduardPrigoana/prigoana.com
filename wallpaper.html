@@ -32,6 +32,10 @@
       transition: background-image 1s ease-in-out;
     }
 
+    .noblur #background {
+      filter: none;
+    }
+
     #track-info {
       position: absolute;
       bottom: 20px;
@@ -94,6 +98,11 @@
     const placeholderImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=";
 
     let previousTrack = "", previousAlbumImage = "";
+
+    // Check if #noblur is in the URL
+    if (window.location.hash === "#noblur") {
+      document.body.classList.add('noblur');
+    }
 
     async function fetchLastPlayedSong() {
       try {
