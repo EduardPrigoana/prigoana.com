@@ -7,7 +7,7 @@ const webamp = new Webamp({
         artist: "Tyler, The Creator",
         title: "IGOR'S THEME",
       },
-      url: "https://igor.prigoana.lol/music/01.%20IGOR'S%20THEME.flac",
+      url: "https://prigoana.com/igor/music/01.%20IGOR'S%20THEME.flac",
 
     },
     {
@@ -15,7 +15,7 @@ const webamp = new Webamp({
         artist: "Tyler, The Creator",
         title: "EARFQUAKE",
       },
-      url: "https://igor.prigoana.lol/music/02.%20EARFQUAKE.flac",
+      url: "https://prigoana.com/igor/music/02.%20EARFQUAKE.flac",
 
     },
     {
@@ -23,7 +23,7 @@ const webamp = new Webamp({
         artist: "Tyler, The Creator",
         title: "I THINK",
       },
-      url: "https://igor.prigoana.lol/music/03.%20I%20THINK.flac",
+      url: "https://prigoana.com/igor/music/03.%20I%20THINK.flac",
 
     },
     {
@@ -39,7 +39,7 @@ const webamp = new Webamp({
         artist: "Tyler, The Creator",
         title: "RUNNING OUT OF TIME",
       },
-      url: "https://igor.prigoana.lol/music/05.%20RUNNING%20OUT%20OF%20TIME.flac",
+      url: "https://prigoana.com/igor/music/05.%20RUNNING%20OUT%20OF%20TIME.flac",
 
     },
     {
@@ -47,7 +47,7 @@ const webamp = new Webamp({
         artist: "Tyler, The Creator",
         title: "NEW MAGIC WAND",
       },
-      url: "https://igor.prigoana.lol/music/06.%20NEW%20MAGIC%20WAND.flac",
+      url: "https://prigoana.com/igor/music/06.%20NEW%20MAGIC%20WAND.flac",
 
     },
     {
@@ -55,7 +55,7 @@ const webamp = new Webamp({
         artist: "Tyler, The Creator",
         title: "A BOY IS A GUN",
       },
-      url: "https://igor.prigoana.lol/music/07.%20A%20BOY%20IS%20A%20GUN_.flac",
+      url: "https://prigoana.com/igor/music/07.%20A%20BOY%20IS%20A%20GUN_.flac",
 
     },
     {
@@ -63,7 +63,7 @@ const webamp = new Webamp({
         artist: "Tyler, The Creator",
         title: "PUPPET",
       },
-      url: "https://igor.prigoana.lol/music/08.%20PUPPET.flac",
+      url: "https://prigoana.com/igor/music/08.%20PUPPET.flac",
 
     },
     {
@@ -71,7 +71,7 @@ const webamp = new Webamp({
         artist: "Tyler, The Creator",
         title: "WHAT'S GOOD",
       },
-      url: "https://igor.prigoana.lol/music/09.%20WHAT'S%20GOOD.flac",
+      url: "https://prigoana.com/igor/music/09.%20WHAT'S%20GOOD.flac",
 
     },
     {
@@ -79,7 +79,7 @@ const webamp = new Webamp({
         artist: "Tyler, The Creator",
         title: "WHAT'S GOOD (original release)",
       },
-      url: "https://igor.prigoana.lol/music/11.%20WHAT'S%20GOOD%20Original%20Release.mp3",
+      url: "https://prigoana.com/igor/music/11.%20WHAT'S%20GOOD%20Original%20Release.mp3",
 
     },
     {
@@ -87,7 +87,7 @@ const webamp = new Webamp({
         artist: "Tyler, The Creator",
         title: "GONE, GONE / THANK YOU",
       },
-      url: "https://igor.prigoana.lol/music/12.%20GONE%2C%20GONE%20-%20THANK%20YOU.flac",
+      url: "https://prigoana.com/igor/music/12.%20GONE%2C%20GONE%20-%20THANK%20YOU.flac",
 
     },
     {
@@ -95,14 +95,14 @@ const webamp = new Webamp({
         artist: "Tyler, The Creator",
         title: "I DONT LOVE YOU ANYMORE",
       },
-      url: "https://igor.prigoana.lol/music/13.%20I%20DON'T%20LOVE%20YOU%20ANYMORE.flac"
+      url: "https://prigoana.com/igor/music/13.%20I%20DON'T%20LOVE%20YOU%20ANYMORE.flac"
     },
     {
       metaData: {
         artist: "Tyler, The Creator",
         title: "ARE WE STILL FRIENDS?",
       },
-      url: "https://igor.prigoana.lol/music/14.%20ARE%20WE%20STILL%20FRIENDS_.flac",
+      url: "https://prigoana.com/igor/music/14.%20ARE%20WE%20STILL%20FRIENDS_.flac",
 
     },
     {
@@ -110,7 +110,7 @@ const webamp = new Webamp({
         artist: "Tyler, The Creator",
         title: "Best Interest (scrapped)",
       },
-      url: "https://igor.prigoana.lol/music/15.%20BEST%20INTEREST.flac",
+      url: "https://prigoana.com/igor/music/15.%20BEST%20INTEREST.flac",
 
     }
   ],
