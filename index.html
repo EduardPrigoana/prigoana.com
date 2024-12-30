@@ -68,9 +68,11 @@
 
     .navbar {
       display: flex;
+      flex-wrap: nowrap;
       list-style: none;
       padding: 10px;
       margin: 0;
+      justify-content: flex-start;
     }
 
     .navbar li {
@@ -150,6 +152,18 @@
 
     #gear-icon {
       display: none;
+    }
+
+    /* Responsive Navbar for small screens */
+    @media (max-width: 600px) {
+      .navbar {
+        flex-wrap: wrap; /* Enable wrapping */
+        justify-content: center; /* Center items */
+      }
+
+      .navbar li {
+        margin-bottom: 10px; /* Add spacing between items when wrapped */
+      }
     }
   </style>
 </head>
@@ -243,7 +257,7 @@
     }
 
     fetchLastPlayedSong();
-    setInterval(fetchLastPlayedSong, 3000);
+    setInterval(fetchLastPlayedSong, 100);
 
     function openSettingsModal() {
       document.getElementById('settings-modal').style.display = 'block';
