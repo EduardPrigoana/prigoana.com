@@ -164,7 +164,12 @@
       .navbar li {
         margin-bottom: 10px; /* Add spacing between items when wrapped */
       }
-    }
+    }a {
+  text-decoration: underline;
+  color: inherit;
+  font: inherit;
+}
+
   </style>
 </head>
 <body>
@@ -213,7 +218,7 @@
   <script src="./index.js"></script>
   <script>
     let username = localStorage.getItem('lastfmUsername') || 'eduardprigoana';
-    const url = `https://lastplayed.prigoana.com/${username}/latest-song`;
+    const url = `https://lastplayed.prigoana.com/${username}/`;
     const songElement = document.querySelector('#song');
     const albumCoverElement = document.querySelector('#album-cover');
     const backgroundElement = document.getElementById('background');
@@ -221,27 +226,40 @@
     let previousAlbumImage = "";
 
     function updateSongDisplay(track) {
-      const { name, artist, album, image } = track;
-      songElement.classList.remove('updated');
-      songElement.innerHTML = `${name} <br> ${artist['#text']}<div>${album['#text']}</div>`;
-      setTimeout(() => songElement.classList.add('updated'), 50);
-      
-      let albumImage = image[2]['#text'] || placeholderImage;
-      if (albumImage === 'https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png') {
-        albumImage = placeholderImage;
-      }
-      if (albumImage !== previousAlbumImage) {
-        const currentImage = albumCoverElement.querySelector('img');
-        if (currentImage) currentImage.classList.remove('visible');
-        albumCoverElement.innerHTML = `<img src="${albumImage}" alt="Album Cover">`;
-        const newImage = albumCoverElement.querySelector('img');
-        newImage.onload = () => newImage.classList.add('visible');
-        backgroundElement.style.backgroundImage = `url(${albumImage})`;
-        previousAlbumImage = albumImage;
-      } else {
-        backgroundElement.style.backgroundImage = `url(${albumImage})`;
-      }
-    }
+  const { name, artist, album, image, url } = track;
+  songElement.classList.remove('updated');
+  
+  // Create an anchor element with the track URL
+  const songLink = document.createElement('a');
+  songLink.href = url;
+  songLink.target = '_blank'; // Opens in a new tab
+  songLink.innerHTML = `${name} <br> ${artist['#text']}<div>${album['#text']}</div>`;
+
+  // Replace the current song element content with the anchor link
+  songElement.innerHTML = '';  // Clear previous content
+  songElement.appendChild(songLink);  // Add the new clickable song link
+
+  setTimeout(() => songElement.classList.add('updated'), 50);
+
+  let albumImage = image[2]['#text'] || placeholderImage;
+  if (albumImage === 'https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png') {
+    albumImage = placeholderImage;
+  }
+
+  if (albumImage !== previousAlbumImage) {
+    const currentImage = albumCoverElement.querySelector('img');
+    if (currentImage) currentImage.classList.remove('visible');
+    albumCoverElement.innerHTML = `<img src="${albumImage}" alt="Album Cover">`;
+    const newImage = albumCoverElement.querySelector('img');
+    newImage.onload = () => newImage.classList.add('visible');
+    backgroundElement.style.backgroundImage = `url(${albumImage})`;
+    previousAlbumImage = albumImage;
+  } else {
+    backgroundElement.style.backgroundImage = `url(${albumImage})`;
+  }
+}
+
+
 
     async function fetchLastPlayedSong() {
       try {
@@ -257,7 +275,7 @@
     }
 
     fetchLastPlayedSong();
-    setInterval(fetchLastPlayedSong, 100);
+    setInterval(fetchLastPlayedSong, 1000);
 
     function openSettingsModal() {
       document.getElementById('settings-modal').style.display = 'block';
