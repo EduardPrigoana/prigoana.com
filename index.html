@@ -210,8 +210,8 @@
     <p>Last played song</p>
     <span id="song"></span><br>
     <div id="album-cover"></div>
+    <p>You're visitor #<span id="visitorCount">0</span></p>
   </div>
-
   <script src="https://unpkg.com/webamp/built/webamp.bundle.min.js"></script>
   <script src="https://unpkg.com/butterchurn/lib/butterchurn.min.js"></script>
   <script src="https://unpkg.com/butterchurn-presets/lib/butterchurnPresets.min.js"></script>
@@ -303,6 +303,30 @@
         document.getElementById('favicon').href = newIcon;
       });
     });
+        // Function to fetch the visitor count from the API
+        async function fetchVisitorCount() {
+            try {
+                // Make an API request
+                const response = await fetch('https://count.prigoana.com/prigoana.com/');
+                
+                // If the response is successful, parse the response as text
+                if (response.ok) {
+                    const visitorNumber = await response.text();
+                    // Display the visitor count in the span element with id 'visitorCount'
+                    document.getElementById('visitorCount').innerText = visitorNumber;
+                } else {
+                    // If the request failed, show an error message
+                    document.getElementById('visitorCount').innerText = '0';
+                }
+            } catch (error) {
+                // Handle any network or other errors
+                console.error('Error fetching visitor count:', error);
+                document.getElementById('visitorCount').innerText = '0';
+            }
+        }
+
+        // Call the function to fetch the visitor count when the page loads
+        fetchVisitorCount();
   </script>
 </body>
 </html>
