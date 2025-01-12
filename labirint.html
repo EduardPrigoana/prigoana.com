@@ -78,6 +78,21 @@
         opacity: 1;
       }
     }
+        /* Style the container to position the draggable image */
+        #draggable-image {
+            position: absolute;
+            display: none;
+            cursor: move;
+            touch-action: none;
+            transition: transform 0.2s;
+        }
+
+        /* Optional: Style to resize the image */
+        .resizable {
+            resize: both;
+            overflow: hidden;
+            z-index: 999;
+        }
   </style>
 </head>
 <body>
@@ -166,5 +181,87 @@
     fetchLastPlayedSong();
     setInterval(fetchLastPlayedSong, 1000);
   </script>
+      <script>
+        // Get the image element
+        const image = document.getElementById('draggable-image');
+        let isDragging = false;
+        let offsetX, offsetY;
+        let scale = 1;
+
+        // Function to show the image when clicked anywhere
+        document.addEventListener('click', function(event) {
+            if (image.style.display === 'none' || image.style.display === '') {
+                image.style.display = 'block';
+                image.style.left = `${event.clientX}px`;
+                image.style.top = `${event.clientY}px`;
+                image.style.transform = `scale(${scale})`;
+            }
+        });
+
+        // Function to start dragging
+        image.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            offsetX = e.clientX - image.offsetLeft;
+            offsetY = e.clientY - image.offsetTop;
+            e.preventDefault();
+        });
+
+        // Function to handle dragging
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                let x = e.clientX - offsetX;
+                let y = e.clientY - offsetY;
+                image.style.left = `${x}px`;
+                image.style.top = `${y}px`;
+            }
+        });
+
+        // Function to stop dragging
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+        });
+
+        // Handling touch for mobile
+        image.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                isDragging = true;
+                const touch = e.touches[0];
+                offsetX = touch.clientX - image.offsetLeft;
+                offsetY = touch.clientY - image.offsetTop;
+                e.preventDefault();
+            }
+        }, {passive: false});
+
+        image.addEventListener('touchmove', (e) => {
+            if (isDragging && e.touches.length === 1) {
+                const touch = e.touches[0];
+                let x = touch.clientX - offsetX;
+                let y = touch.clientY - offsetY;
+                image.style.left = `${x}px`;
+                image.style.top = `${y}px`;
+            }
+        }, {passive: false});
+
+        image.addEventListener('touchend', () => {
+            isDragging = false;
+        });
+
+        // Optional: Adding pinch to zoom for resizing
+        image.addEventListener('gesturestart', (e) => {
+            e.preventDefault();
+        });
+
+        image.addEventListener('gesturechange', (e) => {
+            e.preventDefault();
+        });
+
+        image.addEventListener('gestureend', (e) => {
+            if (e.scale) {
+                scale *= e.scale;
+                image.style.transform = `scale(${scale})`;
+            }
+        });
+
+    </script>
 </body>
 </html>
