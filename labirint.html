@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Last.fm Now Playing</title>
+  <style>
+    @font-face {
+      font-family: 'CustomFont';
+      src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap') format('woff2');
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background-color: #000;
+      font-family: 'CustomFont', Arial, sans-serif;
+    }
+
+    #background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: blur(10px);
+      z-index: -1;
+      transition: background-image 1s ease-in-out;
+    }
+
+    .noblur #background {
+      filter: none;
+    }
+
+    #track-info {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    #track-info h1, #track-info p {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    }
+
+    #track-info h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+
+    #track-info p {
+      font-size: 1.3em;
+      margin: 0.2em 0;
+    }
+
+    .hidden {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 0.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="background"></div>
+  <div id="track-info">
+    <h1 id="track-title"></h1>
+    <p id="track-artist"></p>
+    <p id="track-album"></p>
+  </div>
+
+  <script>
+    const username = localStorage.getItem('lastfmUsername') || 'eduardprigoana';
+    const url = `https://lastplayed.prigoana.com/Labirint84/`;
+    const backgroundElement = document.getElementById('background');
+    const trackTitleElement = document.getElementById('track-title');
+    const trackArtistElement = document.getElementById('track-artist');
+    const trackAlbumElement = document.getElementById('track-album');
+    const placeholderImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=";
+
+    let previousTrack = "", previousAlbumImage = "";
+
+    // Check if #noblur is in the URL
+    if (window.location.hash === "#noblur") {
+      document.body.classList.add('noblur');
+    }
+
+    async function fetchLastPlayedSong() {
+      try {
+        const response = await fetch(url);
+        const { track } = await response.json();
+        if (!track) return;
+
+        const trackName = formatTrackName(track.name);
+        const artistName = track.artist?.['#text'];
+        const albumName = track.album?.['#text'];
+        const albumImage = track.image.find(img => img.size === "large")?.['#text'] || placeholderImage;
+
+        if (trackName !== previousTrack || albumImage !== previousAlbumImage) {
+          updateTrackInfo(trackName, artistName, albumName, albumImage);
+          previousTrack = trackName;
+          previousAlbumImage = albumImage;
+        }
+      } catch (error) {
+        console.error("Error fetching Last.fm data:", error);
+      }
+    }
+
+    function formatTrackName(name) {
+      // Remove "(Album Version (Explicit))" from the track title if it exists
+      return name.replace(/ \(Album Version \(Explicit\)\)/i, '');
+    }
+
+    function updateTrackInfo(trackName, artistName, albumName, albumImage) {
+      preloadImage(albumImage, () => {
+        // Update background and track info
+        backgroundElement.style.backgroundImage = `url(${albumImage})`;
+
+        // Fade out current text
+        trackTitleElement.classList.add('hidden');
+        trackArtistElement.classList.add('hidden');
+        trackAlbumElement.classList.add('hidden');
+
+        setTimeout(() => {
+          // Update track information
+          trackTitleElement.textContent = trackName;
+          trackArtistElement.textContent = artistName || "Unknown Artist";
+          trackAlbumElement.textContent = albumName || "Unknown Album";
+
+          // Apply fade-in animation to new text
+          trackTitleElement.classList.remove('hidden');
+          trackArtistElement.classList.remove('hidden');
+          trackAlbumElement.classList.remove('hidden');
+          trackTitleElement.classList.add('fade-in');
+          trackArtistElement.classList.add('fade-in');
+          trackAlbumElement.classList.add('fade-in');
+        }, 500); // Match transition timing
+      });
+    }
+
+    function preloadImage(src, callback) {
+      const img = new Image();
+      img.src = src;
+      img.onload = callback;
+    }
+
+    fetchLastPlayedSong();
+    setInterval(fetchLastPlayedSong, 1000);
+  </script>
+</body>
+</html>
